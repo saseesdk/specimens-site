@@ -3,6 +3,12 @@
    Shared stylesheet for index, legal pages and 404.
    ========================================================= */
 
+/* Fallbacks sized to match the web fonts, so text doesn't jump when they load */
+@font-face{font-family:"IM Fell Fallback";src:local("Georgia");font-weight:400;font-style:normal;size-adjust:91%}
+@font-face{font-family:"IM Fell Fallback";src:local("Georgia Italic"),local("Georgia-Italic");font-weight:400;font-style:italic;size-adjust:78%}
+@font-face{font-family:"EB Fallback";src:local("Georgia");font-weight:400 500;font-style:normal;size-adjust:86%}
+@font-face{font-family:"EB Fallback";src:local("Georgia Bold"),local("Georgia-Bold");font-weight:600 700;font-style:normal;size-adjust:80%}
+@font-face{font-family:"EB Fallback";src:local("Georgia Italic"),local("Georgia-Italic");font-weight:400 500;font-style:italic;size-adjust:82%}
 @font-face{font-family:"IM Fell English";src:url("../fonts/im-fell-english-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:"IM Fell English";src:url("../fonts/im-fell-english-latin-400-italic.woff2") format("woff2");font-weight:400;font-style:italic;font-display:swap}
 @font-face{font-family:"EB Garamond";src:url("../fonts/eb-garamond-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
@@ -12,8 +18,8 @@
 @font-face{font-family:"EB Garamond";src:url("../fonts/eb-garamond-latin-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
 
 :root{
-  --display:"IM Fell English","EB Garamond",Georgia,serif;
-  --body:"EB Garamond",Georgia,"Times New Roman",serif;
+  --display:"IM Fell English","IM Fell Fallback","EB Garamond","EB Fallback",Georgia,serif;
+  --body:"EB Garamond","EB Fallback",Georgia,"Times New Roman",serif;
 
   --wood-0:#1a0b05;
   --wood-1:#2b1209;
@@ -198,7 +204,7 @@ html[data-launch="soon"] .play-soon{display:inline-flex}
 .nameplate::before{left:12px}.nameplate::after{right:12px}
 .nameplate h1{font-family:var(--display);font-weight:400;font-size:clamp(50px,13vw,96px);line-height:1;margin:0;text-shadow:0 1px 0 rgba(255,240,190,.8),0 -1px 0 rgba(80,50,10,.45)}
 .hero .tagline{font-family:var(--display);font-style:italic;font-size:clamp(22px,5.6vw,34px);line-height:1.15;color:var(--cream);margin:0;text-shadow:0 2px 12px rgba(0,0,0,.7)}
-.hero .sub{max-width:34ch;margin:0 auto;color:var(--parchment-2);font-size:clamp(17px,2vw,20px)}
+.hero .sub{max-width:16.3em;margin:0 auto;color:var(--parchment-2);font-size:clamp(17px,2vw,20px)}
 .hero-facts{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 10px;margin:0;padding:0;list-style:none;font-variant:small-caps;letter-spacing:.08em;font-size:14px;color:var(--parchment-2)}
 .hero-facts li+li::before{content:"✦";color:var(--brass);margin-right:10px;font-size:10px;vertical-align:2px}
 .scroll-cue{margin-top:6px;color:var(--parchment-2);font-size:14px;letter-spacing:.2em;font-variant:small-caps;text-decoration:none;display:inline-flex;flex-direction:column;align-items:center;gap:2px}
@@ -534,7 +540,7 @@ html.js .open .reveal.d3{transition-delay:.75s}
 .finale .icon{width:132px;height:132px;margin:0 auto 18px;border-radius:30px;box-shadow:0 0 0 3px rgba(201,155,69,.6),0 20px 40px rgba(0,0,0,.6),0 0 80px rgba(255,190,100,.35);animation:iconFloat 5s ease-in-out infinite}
 @keyframes iconFloat{50%{transform:translateY(-8px)}}
 .finale h2{font-family:var(--display);font-weight:400;font-size:clamp(40px,9vw,76px);line-height:1;margin:0 0 12px}
-.finale p{max-width:36ch;margin:0 auto 24px;color:var(--parchment-2);font-size:20px}
+.finale p{max-width:17.3em;margin:0 auto 24px;color:var(--parchment-2);font-size:20px}
 .finale .flyers{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .finale .flyers .creature{position:absolute;width:70px}
 .finale .f1{left:6%;top:12%;animation:drift 7s ease-in-out infinite}
