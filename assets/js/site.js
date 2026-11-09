@@ -12,20 +12,6 @@
   if (cfg.playUrl) $$("a[data-play]").forEach(function (a) { a.href = cfg.playUrl; });
   $$("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
-  /* ---------- cabinet doors ---------- */
-  var doors = $(".doors");
-  if (doors) {
-    if (reduce || store("sp-doors")) { doors.classList.add("gone"); }
-    else {
-      store("sp-doors", "1");
-      var openDoors = function () {
-        doors.classList.add("open");
-        setTimeout(function () { doors.classList.add("gone"); }, 1700);
-      };
-      setTimeout(openDoors, 650);
-    }
-  }
-
   /* ---------- dust in the lamp light ---------- */
   (function dust() {
     if (reduce) return;
