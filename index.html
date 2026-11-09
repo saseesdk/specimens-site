@@ -1,50 +1,409 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-launch="soon">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Specimens: a logic puzzle in a naturalist's cabinet</title>
-<meta name="description" content="Specimens is a calm logic puzzle for Android. Place one specimen in every row, column and region, never touching. By Bueno Works.">
-<link rel="icon" href="/favicon.png">
-<link rel="stylesheet" href="/style.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Specimens — a logic puzzle with a living cabinet of curiosities</title>
+<meta name="description" content="Place one creature in every row, column and region, and never let two touch. 1,000+ hand-made logic puzzles, 18 living creatures to collect, ranked Two by Two play. Free on Google Play." />
+<meta name="theme-color" content="#2b1209" />
+<meta property="og:title" content="Specimens — a cabinet of living curiosities" />
+<meta property="og:description" content="A logic puzzle where every answer is alive. Free on Google Play." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://specimens.buenoworks.app/assets/img/og-banner.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/png" href="assets/img/favicon.png" />
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+<link rel="preload" href="assets/fonts/im-fell-english-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="" />
+<link rel="preload" href="assets/fonts/eb-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="" />
+<script src="assets/js/config.js"></script>
+<link rel="stylesheet" href="assets/css/site.css" />
 </head>
 <body>
-<header class="hero">
-  <img class="icon" src="/img/icon.png" alt="Specimens app icon: a jewel beetle in a brass medallion" width="96" height="96">
-  <h1>Specimens</h1>
-  <p class="lede">A calm logic puzzle in a Victorian naturalist's cabinet.</p>
-  <span class="cta">Coming soon to Google Play</span>
-</header>
+<!--BODY-->
+<a class="skip" href="#main">Skip to content</a>
 
-<div class="drawer" aria-hidden="true">
-  <img src="/img/blue_morpho.webp" alt=""><img src="/img/honeybee.webp" alt=""><img src="/img/jellyfish.webp" alt="">
-  <img src="/img/owl.webp" alt=""><img src="/img/chameleon.webp" alt=""><img src="/img/ladybird.webp" alt="">
-  <img src="/img/seahorse.webp" alt=""><img src="/img/monarch.webp" alt=""><img src="/img/red_panda.webp" alt="">
+<div class="doors" aria-hidden="true">
+  <div class="door l"><span class="knob"></span></div>
+  <div class="door r"><span class="knob"></span></div>
+  <div class="plate">Specimens</div>
 </div>
 
-<main class="page">
-  <h1>One of each</h1>
-  <p>Every board is a grid of coloured regions. Place one specimen in every row, every column and every region, and never let two specimens touch, not even diagonally. Each puzzle has exactly one answer, and you can always reason your way to it. No guessing.</p>
-  <div class="shots">
-    <img src="/img/shot2.webp" alt="A Specimens level in progress: a 6 by 6 board of coloured regions with a squirrel, a honeybee and a luna moth placed, and crossed-out cells" width="540" height="960" loading="lazy">
-    <img src="/img/shot3.webp" alt="The Specimen Journal: six catalogued specimens, with more waiting to be found" width="540" height="960" loading="lazy">
+<div class="lamp-glow" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<div class="page">
+<header class="site-head">
+  <a class="brand" href="#top" aria-label="Specimens, back to top"><img src="assets/img/icon-512.png" alt="" width="38" height="38" /><span>Specimens</span></a>
+  <nav class="site-nav" aria-label="Sections">
+    <a href="#puzzle">The Puzzle</a>
+    <a href="#try">Try One</a>
+    <a href="#collection">The Collection</a>
+    <a href="#rare">Rare Finds</a>
+    <a href="#ranked">Two by Two</a>
+  </nav>
+  <a class="play play-live gp" href="https://play.google.com/store/apps/details?id=com.vaultrush.game" target="_blank" rel="noopener" data-play=""><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Get it on Google Play" width="564" height="168" /></a><button class="play play-soon gp" type="button" data-soon><span class="soon-cap">Coming soon</span><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Coming soon to Google Play" width="564" height="168" /></button>
+</header>
+
+<main id="main">
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">From the cabinet of a Victorian naturalist</p>
+      <div class="nameplate"><h1 id="hero-title">Specimens</h1></div>
+      <p class="tagline">The logic puzzle where every answer is alive.</p>
+    </div>
+
+    <div class="hero-case">
+      <div class="case">
+        <div class="case-inner">
+          <div class="slot s-luna"><button class="creature rig rigw luna" type="button" aria-label="Luna moth. Tap to wake it." style="--d:-0.4s"><img class="base" src="assets/img/rig/moth/base.webp" alt="" width="209" height="200" /><img class="ly wgl" src="assets/img/rig/moth/wing_left.webp" alt="" style="transform-origin:45.4% 31.5%" /><img class="ly wgr" src="assets/img/rig/moth/wing_right.webp" alt="" style="transform-origin:54.6% 31.5%" /><img class="ly anl" src="assets/img/rig/moth/antenna_left.webp" alt="" style="transform-origin:47.8% 19.9%" /><img class="ly anr" src="assets/img/rig/moth/antenna_right.webp" alt="" style="transform-origin:52.2% 19.9%" /><img class="ly bd" src="assets/img/rig/moth/body.webp" alt="" style="transform-origin:50.0% 38.6%" /><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span><span class="spark s5"></span></button></div>
+          <div class="slot s-seahorse"><button class="creature seahorse" type="button" aria-label="Seahorse. Tap to wake it."><img class="base" src="assets/img/seahorse.png" alt="" width="65" height="121" /><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span><span class="spark s5"></span></button></div>
+          <div class="slot s-peacock"><button class="creature peacock" type="button" aria-label="Peacock. Tap to wake it."><img class="base" src="assets/img/peacock.png" alt="" width="236" height="239" /><span class="layer fan"><img src="assets/img/peacock.png" alt="" /></span><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span><span class="spark s5"></span></button></div>
+          <div class="slot s-panda"><button class="creature panda" type="button" aria-label="Red panda. Tap to wake it."><img class="base" src="assets/img/redpanda.png" alt="" width="187" height="224" /><span class="layer tail"><img src="assets/img/redpanda.png" alt="" /></span><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span><span class="spark s5"></span></button></div>
+          <div class="slot s-owl"><button class="creature rig rigo owl-r" type="button" aria-label="Barn owl. Tap to wake it." style="--d:-2.1s"><img class="base" src="assets/img/rig/owl/base.webp" alt="" width="131" height="209" /><img class="ly" src="assets/img/rig/owl/body.webp" alt="" /><span class="ly headg" style="transform-origin:50.0% 43.5%"><img src="assets/img/rig/owl/head.webp" alt="" /><img class="lids" src="assets/img/rig/owl/eyelids.webp" alt="" style="transform-origin:50.0% 23.1%" /></span><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span><span class="spark s5"></span></button></div>
+          <div class="slot s-butterfly drift"><button class="creature rig rigw butterfly" type="button" aria-label="Blue morpho. Tap to wake it." style="--d:-3.3s"><img class="base" src="assets/img/rig/blue_morpho/base.webp" alt="" width="205" height="186" /><img class="ly wgl" src="assets/img/rig/blue_morpho/wing_left.webp" alt="" style="transform-origin:46.3% 46.8%" /><img class="ly wgr" src="assets/img/rig/blue_morpho/wing_right.webp" alt="" style="transform-origin:53.7% 46.8%" /><img class="ly anl" src="assets/img/rig/blue_morpho/antenna_left.webp" alt="" style="transform-origin:48.5% 37.1%" /><img class="ly anr" src="assets/img/rig/blue_morpho/antenna_right.webp" alt="" style="transform-origin:51.5% 37.1%" /><img class="ly bd" src="assets/img/rig/blue_morpho/body.webp" alt="" style="transform-origin:50.0% 53.2%" /><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span><span class="spark s5"></span></button></div>
+          <div class="case-shelf"></div>
+          <div class="case-label">Tap a specimen — they're awake</div>
+        </div>
+        <div class="case-glass"></div>
+      </div>
+    </div>
+
+    <div class="hero-cta">
+      <p class="sub">Place one creature in every row, column and region, and never let two touch. Every puzzle has one answer. You never have to guess.</p>
+      <a class="play play-live gp big" href="https://play.google.com/store/apps/details?id=com.vaultrush.game" target="_blank" rel="noopener" data-play=""><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Get it on Google Play" width="564" height="168" /></a><button class="play play-soon gp big" type="button" data-soon><span class="soon-cap">Coming soon</span><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Coming soon to Google Play" width="564" height="168" /></button>
+      <ul class="hero-facts">
+        <li>Free</li>
+        <li>1,000+ puzzles</li>
+        <li>18 living creatures</li>
+      </ul>
+      <a class="scroll-cue" href="#puzzle">Open the drawers<span></span></a>
+    </div>
   </div>
-  <h2>What's inside</h2>
-  <ul>
-    <li>Hundreds of levels, from gentle 4×4 boards to devious 9×9 cabinets</li>
-    <li>A new Daily Puzzle every day, the same for everyone</li>
-    <li>Rankings of real players only, no bots</li>
-    <li>The Specimen Journal, with rare finds for keeping your streak</li>
-    <li>Play as a guest, or sign in with Google to keep your progress on any phone</li>
-  </ul>
-  <p class="muted">Ads are rare and never interrupt a puzzle. Watching one is always your choice.</p>
+</section>
+
+<div class="drawers">
+<!-- ============ I. THE PUZZLE ============ -->
+<section class="drawer" id="puzzle" aria-labelledby="d1-title">
+  <div class="drawer-front">
+    <span class="pull" aria-hidden="true"></span>
+    <div class="label-holder"><span class="card"><span class="no">Drawer No. I</span><span class="ttl" id="d1-title">The Puzzle</span></span></div>
+    <span class="pull right" aria-hidden="true"></span>
+  </div>
+  <div class="drawer-body">
+    <div class="body-grid">
+      <div class="reveal d1">
+        <p class="kicker">Four rules, one answer</p>
+        <h2>Simple to learn. <em>Impossible</em> to put down.</h2>
+        <ol class="rules">
+          <li><b>i.</b> One creature in every row.</li>
+          <li><b>ii.</b> One in every column.</li>
+          <li><b>iii.</b> One in every coloured region.</li>
+          <li><b>iv.</b> No two may touch, not even corner to corner.</li>
+        </ol>
+        <p>Every board has exactly one answer, and you can always reason your way to it. No luck. No guessing. Just that quiet click when the last creature slides home.</p>
+        <ul class="facts">
+          <li><b>1,000+</b><span>puzzles, all pure logic</span></li>
+          <li><b>4×4 → 9×9</b><span>gentle to fiendish</span></li>
+        </ul>
+      </div>
+      <div class="reveal d2">
+        <div class="board-frame">
+          <div class="board n6" id="demo-board" aria-label="A six by six board solving itself" role="img">
+<span class="cell c-blue" data-r="0" data-c="0"><span class="x"></span></span>
+<span class="cell c-blue" data-r="0" data-c="1"><span class="x"></span></span>
+<span class="cell c-peach" data-r="0" data-c="2"><span class="x"></span></span>
+<span class="cell c-cream" data-r="0" data-c="3"><span class="x"></span></span>
+<span class="cell c-cream" data-r="0" data-c="4"><span class="x"></span><span class="pc"><img src="assets/img/tile/blue_morpho.webp" alt="" /></span></span>
+<span class="cell c-green" data-r="0" data-c="5"><span class="x"></span></span>
+<span class="cell c-blue" data-r="1" data-c="0"><span class="x"></span></span>
+<span class="cell c-blue" data-r="1" data-c="1"><span class="x"></span></span>
+<span class="cell c-peach" data-r="1" data-c="2"><span class="x"></span><span class="pc"><img src="assets/img/tile/peacock.webp" alt="" /></span></span>
+<span class="cell c-green" data-r="1" data-c="3"><span class="x"></span></span>
+<span class="cell c-green" data-r="1" data-c="4"><span class="x"></span></span>
+<span class="cell c-green" data-r="1" data-c="5"><span class="x"></span></span>
+<span class="cell c-blue" data-r="2" data-c="0"><span class="x"></span></span>
+<span class="cell c-blue" data-r="2" data-c="1"><span class="x"></span></span>
+<span class="cell c-blue" data-r="2" data-c="2"><span class="x"></span></span>
+<span class="cell c-green" data-r="2" data-c="3"><span class="x"></span></span>
+<span class="cell c-green" data-r="2" data-c="4"><span class="x"></span></span>
+<span class="cell c-green" data-r="2" data-c="5"><span class="x"></span><span class="pc"><img src="assets/img/tile/owl.webp" alt="" /></span></span>
+<span class="cell c-purple" data-r="3" data-c="0"><span class="x"></span></span>
+<span class="cell c-blue" data-r="3" data-c="1"><span class="x"></span><span class="pc"><img src="assets/img/tile/seahorse.webp" alt="" /></span></span>
+<span class="cell c-blue" data-r="3" data-c="2"><span class="x"></span></span>
+<span class="cell c-green" data-r="3" data-c="3"><span class="x"></span></span>
+<span class="cell c-green" data-r="3" data-c="4"><span class="x"></span></span>
+<span class="cell c-green" data-r="3" data-c="5"><span class="x"></span></span>
+<span class="cell c-purple" data-r="4" data-c="0"><span class="x"></span></span>
+<span class="cell c-yellow" data-r="4" data-c="1"><span class="x"></span></span>
+<span class="cell c-yellow" data-r="4" data-c="2"><span class="x"></span></span>
+<span class="cell c-yellow" data-r="4" data-c="3"><span class="x"></span><span class="pc"><img src="assets/img/tile/red_panda.webp" alt="" /></span></span>
+<span class="cell c-green" data-r="4" data-c="4"><span class="x"></span></span>
+<span class="cell c-green" data-r="4" data-c="5"><span class="x"></span></span>
+<span class="cell c-purple" data-r="5" data-c="0"><span class="x"></span><span class="pc"><img src="assets/img/tile/moth.webp" alt="" /></span></span>
+<span class="cell c-yellow" data-r="5" data-c="1"><span class="x"></span></span>
+<span class="cell c-yellow" data-r="5" data-c="2"><span class="x"></span></span>
+<span class="cell c-yellow" data-r="5" data-c="3"><span class="x"></span></span>
+<span class="cell c-yellow" data-r="5" data-c="4"><span class="x"></span></span>
+<span class="cell c-yellow" data-r="5" data-c="5"><span class="x"></span></span>
+          </div>
+        </div>
+        <p class="board-caption" id="demo-caption" aria-live="polite">Watch a board solve itself.</p>
+        <div class="board-tools"><button class="btn-ghost" type="button" id="demo-replay">Solve it again</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ II. TRY ONE ============ -->
+<section class="drawer" id="try" aria-labelledby="d2-title">
+  <div class="drawer-front">
+    <span class="pull" aria-hidden="true"></span>
+    <div class="label-holder"><span class="card"><span class="no">Drawer No. II</span><span class="ttl" id="d2-title">Try One</span></span></div>
+    <span class="pull right" aria-hidden="true"></span>
+  </div>
+  <div class="drawer-body">
+    <div class="body-grid flip">
+      <div class="reveal d1">
+        <p class="kicker">Your first specimen board</p>
+        <h2>Place four creatures. <em>Feel it click.</em></h2>
+        <p>Just like the game: <b>tap</b> a square to cross it out, <b>double-tap</b> to place a creature. One in each row, each column and each colour, and none may touch.</p>
+        <p class="tap-hint"><i></i>Hint: the blue region is very small.</p>
+      </div>
+      <div class="reveal d2">
+        <div class="board-frame">
+          <div class="board n4" id="play-board" role="grid" aria-label="Four by four practice puzzle">
+<button class="cell c-blue" type="button" data-r="0" data-c="0" data-g="blue" aria-label="Row 1, column 1, blue region, empty"><span class="x"></span><span class="pc"><img src="assets/img/tile/blue_morpho.webp" alt="" /></span></button>
+<button class="cell c-blue" type="button" data-r="0" data-c="1" data-g="blue" aria-label="Row 1, column 2, blue region, empty"><span class="x"></span><span class="pc"><img src="assets/img/tile/blue_morpho.webp" alt="" /></span></button>
+<button class="cell c-green" type="button" data-r="0" data-c="2" data-g="green" aria-label="Row 1, column 3, green region, empty"><span class="x"></span><span class="pc"><img src="assets/img/tile/owl.webp" alt="" /></span></button>
+<button class="cell c-green" type="button" data-r="0" data-c="3" data-g="green" aria-label="Row 1, column 4, green region, empty"><span class="x"></span><span class="pc"><img src="assets/img/tile/owl.webp" alt="" /></span></button>
+<button class="cell c-peach" type="button" data-r="1" data-c="0" data-g="peach" aria-label="Row 2, column 1, peach region, empty"><span class="x"></span><span class="pc"><img src="assets/img/tile/peacock.webp" alt="" /></span></button>
+<button class="cell c-peach" type="button" data-r="1" data-c="1" data-g="peach" aria-label="Row 2, column 2, peach region, empty"><span class="x"></span><span class="pc"><img src="assets/img/tile/peacock.webp" alt="" /></span></button>
+<button class="cell c-green" type="button" data-r="1" data-c="2" data-g="green" aria-label="Row 2, column 3, green region, empty"><span class="x"></span><span class="pc"><img src="assets/img/tile/owl.webp" alt="" /></span></button>
+<button class="cell c-green" type="button" data-r="1" data-c="3" data-g="green" aria-label="Row 2, column 4, green region, empty"><span class="x"></span><span class="pc"><img src="assets/img/tile/owl.webp" alt="" /></span></button>
+<button class="cell c-peach" type="button" data-r="2" data-c="0" data-g="peach" aria-label="Row 3, column 1, peach region, empty"><span class="x"></span><span class="pc"><img src="assets/img/tile/peacock.webp" alt="" /></span></button>
+<button class="cell c-peach" type="button" data-r="2" data-c="1" data-g="peach" aria-label="Row 3, column 2, peach region, empty"><span class="x"></span><span class="pc"><img src="assets/img/tile/peacock.webp" alt="" /></span></button>
+<button class="cell c-yellow" type="button" data-r="2" data-c="2" data-g="yellow" aria-label="Row 3, column 3, yellow region, empty"><span class="x"></span><span class="pc"><img src="assets/img/tile/seahorse.webp" alt="" /></span></button>
+<button class="cell c-green" type="button" data-r="2" data-c="3" data-g="green" aria-label="Row 3, column 4, green region, empty"><span class="x"></span><span class="pc"><img src="assets/img/tile/owl.webp" alt="" /></span></button>
+<button class="cell c-peach" type="button" data-r="3" data-c="0" data-g="peach" aria-label="Row 4, column 1, peach region, empty"><span class="x"></span><span class="pc"><img src="assets/img/tile/peacock.webp" alt="" /></span></button>
+<button class="cell c-yellow" type="button" data-r="3" data-c="1" data-g="yellow" aria-label="Row 4, column 2, yellow region, empty"><span class="x"></span><span class="pc"><img src="assets/img/tile/seahorse.webp" alt="" /></span></button>
+<button class="cell c-yellow" type="button" data-r="3" data-c="2" data-g="yellow" aria-label="Row 4, column 3, yellow region, empty"><span class="x"></span><span class="pc"><img src="assets/img/tile/seahorse.webp" alt="" /></span></button>
+<button class="cell c-yellow" type="button" data-r="3" data-c="3" data-g="yellow" aria-label="Row 4, column 4, yellow region, empty"><span class="x"></span><span class="pc"><img src="assets/img/tile/seahorse.webp" alt="" /></span></button>
+          </div>
+        </div>
+        <div class="tracker" aria-hidden="true">
+          <span class="medal" data-m="blue"><span><img src="assets/img/butterfly.png" alt="" /></span></span>
+          <span class="medal" data-m="green"><span><img src="assets/img/owl.png" alt="" /></span></span>
+          <span class="medal" data-m="peach"><span><img src="assets/img/peacock.png" alt="" /></span></span>
+          <span class="medal" data-m="yellow"><span><img src="assets/img/seahorse.png" alt="" /></span></span>
+        </div>
+        <p class="board-caption" id="play-caption" aria-live="polite">Four creatures to place.</p>
+        <div class="board-tools"><button class="btn-ghost" type="button" id="play-reset">Clear the board</button></div>
+        <div class="win" id="play-win">
+          <p>Solved. Now imagine a thousand more.</p>
+          <a class="play play-live gp big" href="https://play.google.com/store/apps/details?id=com.vaultrush.game" target="_blank" rel="noopener" data-play=""><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Get it on Google Play" width="564" height="168" /></a><button class="play play-soon gp big" type="button" data-soon><span class="soon-cap">Coming soon</span><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Coming soon to Google Play" width="564" height="168" /></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ III. THE COLLECTION ============ -->
+<section class="drawer" id="collection" aria-labelledby="d3-title">
+  <div class="drawer-front">
+    <span class="pull" aria-hidden="true"></span>
+    <div class="label-holder"><span class="card"><span class="no">Drawer No. III</span><span class="ttl" id="d3-title">The Living Collection</span></span></div>
+    <span class="pull right" aria-hidden="true"></span>
+  </div>
+  <div class="drawer-body">
+    <div class="reveal d1" style="text-align:center;max-width:760px;margin:0 auto 26px">
+      <p class="kicker">The Specimen Journal</p>
+      <h2>Nothing in this cabinet <em>stays still.</em></h2>
+      <p>Solve puzzles to discover 18 creatures, each one alive, each one catalogued in your Specimen Journal. Butterflies flutter. The owl blinks and turns its head. The peacock fans its feathers.</p>
+      <p class="tap-hint"><i></i>Tap any specimen to wake it.</p>
+    </div>
+    <div class="journal reveal d2">
+      <figure class="spec" style="margin:0"><span class="pinhead"></span><div class="stage"><button class="creature rig rigw butterfly" type="button" aria-label="Blue morpho. Tap to wake it." style="--d:-1.2s"><img class="base" src="assets/img/rig/blue_morpho/base.webp" alt="" width="205" height="186" /><img class="ly wgl" src="assets/img/rig/blue_morpho/wing_left.webp" alt="" style="transform-origin:46.3% 46.8%" /><img class="ly wgr" src="assets/img/rig/blue_morpho/wing_right.webp" alt="" style="transform-origin:53.7% 46.8%" /><img class="ly anl" src="assets/img/rig/blue_morpho/antenna_left.webp" alt="" style="transform-origin:48.5% 37.1%" /><img class="ly anr" src="assets/img/rig/blue_morpho/antenna_right.webp" alt="" style="transform-origin:51.5% 37.1%" /><img class="ly bd" src="assets/img/rig/blue_morpho/body.webp" alt="" style="transform-origin:50.0% 53.2%" /><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span><span class="spark s5"></span></button></div><figcaption><span class="name" style="display:block">Blue Morpho</span><span class="latin" style="display:block">Morpho menelaus</span></figcaption><span class="no">No. 001</span></figure>
+      <figure class="spec" style="margin:0"><span class="pinhead"></span><div class="stage"><button class="creature rig rigo owl-r" type="button" aria-label="Barn owl. Tap to wake it." style="--d:-4.6s"><img class="base" src="assets/img/rig/owl/base.webp" alt="" width="131" height="209" /><img class="ly" src="assets/img/rig/owl/body.webp" alt="" /><span class="ly headg" style="transform-origin:50.0% 43.5%"><img src="assets/img/rig/owl/head.webp" alt="" /><img class="lids" src="assets/img/rig/owl/eyelids.webp" alt="" style="transform-origin:50.0% 23.1%" /></span><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span><span class="spark s5"></span></button></div><figcaption><span class="name" style="display:block">Barn Owl</span><span class="latin" style="display:block">Tyto alba</span></figcaption><span class="no">No. 002</span></figure>
+      <figure class="spec" style="margin:0"><span class="pinhead"></span><div class="stage"><button class="creature peacock" type="button" aria-label="Peacock. Tap to wake it."><img class="base" src="assets/img/peacock.png" alt="" width="236" height="239" /><span class="layer fan"><img src="assets/img/peacock.png" alt="" /></span><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span><span class="spark s5"></span></button></div><figcaption><span class="name" style="display:block">Peacock</span><span class="latin" style="display:block">Pavo cristatus</span></figcaption><span class="no">No. 003</span></figure>
+      <figure class="spec" style="margin:0"><span class="pinhead"></span><div class="stage"><button class="creature rig rigw luna" type="button" aria-label="Luna moth. Tap to wake it." style="--d:-0.9s"><img class="base" src="assets/img/rig/moth/base.webp" alt="" width="209" height="200" /><img class="ly wgl" src="assets/img/rig/moth/wing_left.webp" alt="" style="transform-origin:45.4% 31.5%" /><img class="ly wgr" src="assets/img/rig/moth/wing_right.webp" alt="" style="transform-origin:54.6% 31.5%" /><img class="ly anl" src="assets/img/rig/moth/antenna_left.webp" alt="" style="transform-origin:47.8% 19.9%" /><img class="ly anr" src="assets/img/rig/moth/antenna_right.webp" alt="" style="transform-origin:52.2% 19.9%" /><img class="ly bd" src="assets/img/rig/moth/body.webp" alt="" style="transform-origin:50.0% 38.6%" /><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span><span class="spark s5"></span></button></div><figcaption><span class="name" style="display:block">Luna Moth</span><span class="latin" style="display:block">Actias luna</span></figcaption><span class="no">No. 004</span></figure>
+      <figure class="spec" style="margin:0"><span class="pinhead"></span><div class="stage"><button class="creature seahorse" type="button" aria-label="Seahorse. Tap to wake it."><img class="base" src="assets/img/seahorse.png" alt="" width="65" height="121" /><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span><span class="spark s5"></span></button></div><figcaption><span class="name" style="display:block">Seahorse</span><span class="latin" style="display:block">Hippocampus</span></figcaption><span class="no">No. 005</span></figure>
+      <figure class="spec sealed" style="margin:0"><div class="stage"><span class="wax" aria-hidden="true">?</span></div><figcaption><span class="name" style="display:block">Undiscovered</span><span class="latin" style="display:block">Sealed until found</span></figcaption><span class="no">No. 006</span></figure>
+      <p class="journal-more"><b>13 more</b> are waiting in the drawers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IV. RARE FINDS ============ -->
+<section class="drawer" id="rare" aria-labelledby="d4-title">
+  <div class="drawer-front">
+    <span class="pull" aria-hidden="true"></span>
+    <div class="label-holder"><span class="card"><span class="no">Drawer No. IV · Locked</span><span class="ttl" id="d4-title">Rare Finds</span></span></div>
+    <span class="pull right" aria-hidden="true"></span>
+  </div>
+  <div class="drawer-body dark">
+    <div class="body-grid">
+      <div class="reveal d1">
+        <p class="kicker">Seven specimens you can't find. Only earn.</p>
+        <h2>Keep the streak. <em>Open the velvet drawer.</em></h2>
+        <p>A new Daily Puzzle every day, the same one for every collector in the world. Solve it, keep your streak alive, and the cabinet's rarest residents come out of hiding.</p>
+        <div class="streak" id="streak">
+          <div class="streak-head"><b>Daily Puzzle</b><span>Your streak</span></div>
+          <ol class="days">
+            <li><i></i>Mon</li><li><i></i>Tue</li><li><i></i>Wed</li><li><i></i>Thu</li><li><i></i>Fri</li><li><i></i>Sat</li><li class="gift"><i></i>Sun</li>
+          </ol>
+          <p class="streak-reward" id="streak-reward" aria-live="polite">Rare find unlocked</p>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <div class="vault">
+          <div class="vault-slot"><button class="creature rig rigw luna golden" type="button" aria-label="Luna moth (golden). Tap to wake it." style="--d:-2.8s"><img class="base" src="assets/img/rig/moth_gold/base.webp" alt="" width="209" height="200" /><img class="ly wgl" src="assets/img/rig/moth_gold/wing_left.webp" alt="" style="transform-origin:45.4% 31.5%" /><img class="ly wgr" src="assets/img/rig/moth_gold/wing_right.webp" alt="" style="transform-origin:54.6% 31.5%" /><img class="ly anl" src="assets/img/rig/moth_gold/antenna_left.webp" alt="" style="transform-origin:47.8% 19.9%" /><img class="ly anr" src="assets/img/rig/moth_gold/antenna_right.webp" alt="" style="transform-origin:52.2% 19.9%" /><img class="ly bd" src="assets/img/rig/moth_gold/body.webp" alt="" style="transform-origin:50.0% 38.6%" /><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span><span class="spark s5"></span></button><span class="tag">Golden Luna Moth<small>Rare find</small></span></div>
+          <div class="vault-slot owl-slot"><button class="creature rig rigo owl-r albino" type="button" aria-label="Barn owl (albino). Tap to wake it." style="--d:-3.9s"><img class="base" src="assets/img/rig/owl_albino/base.webp" alt="" width="131" height="209" /><img class="ly" src="assets/img/rig/owl_albino/body.webp" alt="" /><span class="ly headg" style="transform-origin:50.0% 43.5%"><img src="assets/img/rig/owl_albino/head.webp" alt="" /><img class="lids" src="assets/img/rig/owl_albino/eyelids.webp" alt="" style="transform-origin:50.0% 23.1%" /></span><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span><span class="spark s5"></span></button><span class="tag">Albino Barn Owl<small>Rare find</small></span></div>
+          <div class="vault-slot"><button class="creature panda" type="button" aria-label="Red panda. Tap to wake it."><img class="base" src="assets/img/redpanda.png" alt="" width="187" height="224" /><span class="layer tail"><img src="assets/img/redpanda.png" alt="" /></span><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span><span class="spark s5"></span></button><span class="tag">Red Panda<small>Rare find</small></span></div>
+        </div>
+        <div class="vault-locked" aria-label="Four more rare finds, still locked">
+          <span class="lock"><i></i></span><span class="lock"><i></i></span><span class="lock"><i></i></span><span class="lock"><i></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ V. TWO BY TWO ============ -->
+<section class="drawer" id="ranked" aria-labelledby="d5-title">
+  <div class="drawer-front">
+    <span class="pull" aria-hidden="true"></span>
+    <div class="label-holder"><span class="card"><span class="no">Drawer No. V · Ranked</span><span class="ttl" id="d5-title">Two by Two</span></span></div>
+    <span class="pull right" aria-hidden="true"></span>
+  </div>
+  <div class="drawer-body">
+    <div class="ranked">
+      <div class="reveal d1">
+        <p class="kicker">Ranked play · real players only</p>
+        <h2>Two of everything. <em>Every game counts.</em></h2>
+        <p>Two creatures in every row, every column, every region. Every game moves your rating, and the rankings are real players only, no bots. Climb from Apprentice to Professor and earn your place in the Society.</p>
+        <div class="duel" aria-hidden="true">
+          <img class="watch" src="assets/img/watch.png" alt="" />
+          <span class="vs">par</span>
+          <img class="watch b" src="assets/img/watch.png" alt="" />
+        </div>
+        <div class="mini2" aria-hidden="true">
+<i class="c-cream"></i>
+<i class="c-cream"></i>
+<i class="c-blue"></i>
+<i class="c-blue"></i>
+<i class="c-blue"><img src="assets/img/tile/blue_morpho.webp" alt="" /></i>
+<i class="c-blue"></i>
+<i class="c-teal"><img src="assets/img/tile/owl.webp" alt="" /></i>
+<i class="c-teal"></i>
+<i class="c-cream"><img src="assets/img/tile/peacock.webp" alt="" /></i>
+<i class="c-blue"></i>
+<i class="c-blue"><img src="assets/img/tile/blue_morpho.webp" alt="" /></i>
+<i class="c-blue"></i>
+<i class="c-blue"></i>
+<i class="c-rose"></i>
+<i class="c-rose"></i>
+<i class="c-teal"></i>
+<i class="c-cream"></i>
+<i class="c-blue"></i>
+<i class="c-blue"></i>
+<i class="c-rose"></i>
+<i class="c-rose"><img src="assets/img/tile/ladybird.webp" alt="" /></i>
+<i class="c-rose"></i>
+<i class="c-rose"><img src="assets/img/tile/ladybird.webp" alt="" /></i>
+<i class="c-teal"></i>
+<i class="c-cream"><img src="assets/img/tile/peacock.webp" alt="" /></i>
+<i class="c-yellow"></i>
+<i class="c-green"><img src="assets/img/tile/seahorse.webp" alt="" /></i>
+<i class="c-green"></i>
+<i class="c-rose"></i>
+<i class="c-rose"></i>
+<i class="c-teal"></i>
+<i class="c-teal"></i>
+<i class="c-yellow"></i>
+<i class="c-yellow"></i>
+<i class="c-yellow"></i>
+<i class="c-green"></i>
+<i class="c-green"></i>
+<i class="c-green"><img src="assets/img/tile/seahorse.webp" alt="" /></i>
+<i class="c-teal"></i>
+<i class="c-teal"><img src="assets/img/tile/owl.webp" alt="" /></i>
+<i class="c-yellow"></i>
+<i class="c-yellow"><img src="assets/img/tile/red_panda.webp" alt="" /></i>
+<i class="c-yellow"></i>
+<i class="c-yellow"><img src="assets/img/tile/red_panda.webp" alt="" /></i>
+<i class="c-yellow"></i>
+<i class="c-green"></i>
+<i class="c-green"></i>
+<i class="c-teal"></i>
+<i class="c-yellow"></i>
+<i class="c-purple"></i>
+<i class="c-purple"></i>
+<i class="c-yellow"></i>
+<i class="c-peach"></i>
+<i class="c-peach"><img src="assets/img/tile/squirrel.webp" alt="" /></i>
+<i class="c-peach"></i>
+<i class="c-peach"><img src="assets/img/tile/squirrel.webp" alt="" /></i>
+<i class="c-yellow"></i>
+<i class="c-purple"><img src="assets/img/tile/moth.webp" alt="" /></i>
+<i class="c-purple"></i>
+<i class="c-purple"><img src="assets/img/tile/moth.webp" alt="" /></i>
+<i class="c-purple"></i>
+<i class="c-peach"></i>
+<i class="c-peach"></i>
+<i class="c-peach"></i>
+        </div>
+        <p class="mini-cap">Two creatures per row, column and region.</p>
+      </div>
+      <div class="reveal d2">
+        <img class="emblem" src="assets/img/emblem.png" alt="" />
+        <ol class="ladder" id="ladder" aria-label="Ranks, lowest to highest">
+          <li><b>Apprentice</b><span>Where everyone begins</span></li>
+          <li><b>Collector</b><span>A keen eye</span></li>
+          <li><b>Curator</b><span>Trusted with the keys</span></li>
+          <li><b>Fellow</b><span>Of the Society</span></li>
+          <li><b>Professor</b><span>The top of the cabinet</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ============ FINALE ============ -->
+<section class="finale" id="get" aria-labelledby="final-title">
+  <div class="flyers" aria-hidden="true">
+    <div class="f1"><span class="creature rig rigw butterfly" aria-hidden="true" style="--d:-1.7s"><img class="base" src="assets/img/rig/blue_morpho/base.webp" alt="" width="205" height="186" /><img class="ly wgl" src="assets/img/rig/blue_morpho/wing_left.webp" alt="" style="transform-origin:46.3% 46.8%" /><img class="ly wgr" src="assets/img/rig/blue_morpho/wing_right.webp" alt="" style="transform-origin:53.7% 46.8%" /><img class="ly anl" src="assets/img/rig/blue_morpho/antenna_left.webp" alt="" style="transform-origin:48.5% 37.1%" /><img class="ly anr" src="assets/img/rig/blue_morpho/antenna_right.webp" alt="" style="transform-origin:51.5% 37.1%" /><img class="ly bd" src="assets/img/rig/blue_morpho/body.webp" alt="" style="transform-origin:50.0% 53.2%" /></span></div>
+    <div class="f2"><span class="creature rig rigw luna" aria-hidden="true" style="--d:-5.1s"><img class="base" src="assets/img/rig/moth/base.webp" alt="" width="209" height="200" /><img class="ly wgl" src="assets/img/rig/moth/wing_left.webp" alt="" style="transform-origin:45.4% 31.5%" /><img class="ly wgr" src="assets/img/rig/moth/wing_right.webp" alt="" style="transform-origin:54.6% 31.5%" /><img class="ly anl" src="assets/img/rig/moth/antenna_left.webp" alt="" style="transform-origin:47.8% 19.9%" /><img class="ly anr" src="assets/img/rig/moth/antenna_right.webp" alt="" style="transform-origin:52.2% 19.9%" /><img class="ly bd" src="assets/img/rig/moth/body.webp" alt="" style="transform-origin:50.0% 38.6%" /></span></div>
+  </div>
+  <div class="wrap">
+    <img class="icon" src="assets/img/icon-512.png" alt="Specimens app icon" width="132" height="132" />
+    <h2 id="final-title">The cabinet is open.</h2>
+    <p>1,000+ puzzles, a Daily Puzzle, ranked Two by Two, and a collection that's alive. Free on Android.</p>
+    <a class="play play-live gp big" href="https://play.google.com/store/apps/details?id=com.vaultrush.game" target="_blank" rel="noopener" data-play=""><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Get it on Google Play" width="564" height="168" /></a><button class="play play-soon gp big" type="button" data-soon><span class="soon-cap">Coming soon</span><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Coming soon to Google Play" width="564" height="168" /></button>
+  </div>
+</section>
 </main>
 
-<footer>
-  Made by <a href="https://buenoworks.app">Bueno Works</a> ·
-  <a href="/privacy/">Privacy</a> ·
-  <a href="/delete-account/">Delete your account</a> ·
-  <a href="mailto:support@buenoworks.app">support@buenoworks.app</a>
+<footer class="site-foot">
+  <nav aria-label="Legal">
+    <a href="/">Home</a>
+    <a href="/privacy/">Privacy policy</a>
+    <a href="/delete-account/">Delete your account</a>
+    <a href="mailto:support@buenoworks.app">support@buenoworks.app</a>
+    <a href="#" data-cookies>Cookie settings</a>
+  </nav>
+  <p style="margin:0">© <span data-year="">2026</span> Bueno Works. Google Play is a trademark of Google LLC.</p>
 </footer>
+</div>
+
+<div class="cta-rail" id="cta-rail">
+  <div class="rail-id"><img src="assets/img/icon-512.png" alt="" /><div><b>Specimens</b><small>Free puzzle game</small></div></div>
+  <a class="play play-live gp" href="https://play.google.com/store/apps/details?id=com.vaultrush.game" target="_blank" rel="noopener" data-play=""><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Get it on Google Play" width="564" height="168" /></a><button class="play play-soon gp" type="button" data-soon><span class="soon-cap">Coming soon</span><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Coming soon to Google Play" width="564" height="168" /></button>
+</div>
+<!--/BODY-->
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/analytics.js" defer></script>
 </body>
 </html>

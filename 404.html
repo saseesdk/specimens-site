@@ -1,16 +1,64 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-launch="soon">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Not found · Specimens</title>
-<link rel="icon" href="/favicon.png">
-<link rel="stylesheet" href="/style.css">
+<meta charset="utf-8" />
+<!-- GitHub Pages serves this page at any missing URL, so assets are loaded from the site root.
+     If the site lives at username.github.io/REPO/, change href below to "/REPO/". -->
+<base href="/" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Page not found · Specimens</title>
+<meta name="description" content="This specimen has escaped." />
+<meta name="theme-color" content="#2b1209" />
+<meta property="og:title" content="Specimens — a cabinet of living curiosities" />
+<meta property="og:description" content="A logic puzzle where every answer is alive. Free on Google Play." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://specimens.buenoworks.app/assets/img/og-banner.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/png" href="assets/img/favicon.png" />
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+<link rel="preload" href="assets/fonts/im-fell-english-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="" />
+<link rel="preload" href="assets/fonts/eb-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="" />
+<script src="assets/js/config.js"></script>
+<link rel="stylesheet" href="assets/css/site.css" />
 </head>
 <body>
-<header class="hero">
-  <h1>Not in the cabinet</h1>
-  <p class="lede">This page has wandered off. <a href="/" style="color:var(--gilt)">Back to Specimens</a></p>
+<!--BODY-->
+<a class="skip" href="#main">Skip to content</a>
+<div class="lamp-glow" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="page">
+<header class="site-head">
+  <a class="brand" href="/" aria-label="Specimens home"><img src="assets/img/icon-512.png" alt="" width="38" height="38" /><span>Specimens</span></a>
+  <a class="play play-live gp" href="https://play.google.com/store/apps/details?id=com.vaultrush.game" target="_blank" rel="noopener" data-play=""><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Get it on Google Play" width="564" height="168" /></a><button class="play play-soon gp" type="button" data-soon><span class="soon-cap">Coming soon</span><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Coming soon to Google Play" width="564" height="168" /></button>
 </header>
+<main id="main" class="lost">
+  <div class="lost-card">
+    <span class="pinhead"></span>
+    <div class="outline"><img src="assets/img/butterfly.png" alt="" /></div>
+    <span class="labelstrip">Specimen No. 404</span>
+    <p class="code" aria-hidden="true">404</p>
+    <h1>This specimen has escaped.</h1>
+    <p>The page you were looking for has fluttered off. Only the pin is left.</p>
+    <div class="lost-actions">
+      <a class="btn-ghost" href="/" style="text-decoration:none;display:inline-flex;align-items:center">Return to the cabinet</a>
+      <a class="play play-live gp big" href="https://play.google.com/store/apps/details?id=com.vaultrush.game" target="_blank" rel="noopener" data-play=""><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Get it on Google Play" width="564" height="168" /></a><button class="play play-soon gp big" type="button" data-soon><span class="soon-cap">Coming soon</span><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Coming soon to Google Play" width="564" height="168" /></button>
+    </div>
+  </div>
+</main>
+<div class="escapee" aria-hidden="true"><span class="creature winged butterfly" aria-hidden="true"><img class="base" src="assets/img/butterfly.png" alt="" width="209" height="190" /><span class="wing wl"><img src="assets/img/butterfly.png" alt="" /></span><span class="wing wr"><img src="assets/img/butterfly.png" alt="" /></span></span></div>
+<footer class="site-foot">
+  <nav aria-label="Legal">
+    <a href="/">Home</a>
+    <a href="/privacy/">Privacy policy</a>
+    <a href="/delete-account/">Delete your account</a>
+    <a href="mailto:support@buenoworks.app">support@buenoworks.app</a>
+    <a href="#" data-cookies>Cookie settings</a>
+  </nav>
+  <p style="margin:0">© <span data-year="">2026</span> Bueno Works. Google Play is a trademark of Google LLC.</p>
+</footer>
+</div>
+<!--/BODY-->
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/analytics.js" defer></script>
 </body>
 </html>

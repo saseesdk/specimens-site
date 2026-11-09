@@ -1,22 +1,44 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-launch="soon">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Delete your account · Specimens</title>
-<meta name="description" content="How to delete your Specimens account and data.">
-<link rel="icon" href="/favicon.png">
-<link rel="stylesheet" href="/style.css">
+<meta name="description" content="How to delete your Specimens account and data." />
+<meta name="theme-color" content="#2b1209" />
+<meta property="og:title" content="Specimens — a cabinet of living curiosities" />
+<meta property="og:description" content="A logic puzzle where every answer is alive. Free on Google Play." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://specimens.buenoworks.app/assets/img/og-banner.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/png" href="/assets/img/favicon.png" />
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+<link rel="preload" href="/assets/fonts/im-fell-english-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="" />
+<link rel="preload" href="/assets/fonts/eb-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="" />
+<script src="/assets/js/config.js"></script>
+<link rel="stylesheet" href="/assets/css/site.css" />
 </head>
 <body>
-<header class="hero" style="padding-bottom:24px">
-  <a href="/"><img class="icon" src="/img/icon.png" alt="Specimens home" width="96" height="96"></a>
+<!--BODY-->
+<a class="skip" href="#main">Skip to content</a>
+<div class="lamp-glow" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="page">
+<header class="site-head">
+  <a class="brand" href="/" aria-label="Specimens home"><img src="/assets/img/icon-512.png" alt="" width="38" height="38" /><span>Specimens</span></a>
+  <a class="play play-live gp" href="https://play.google.com/store/apps/details?id=com.vaultrush.game" target="_blank" rel="noopener" data-play=""><img class="gp-badge" src="/assets/img/google-play-badge.png" alt="Get it on Google Play" width="564" height="168" /></a><button class="play play-soon gp" type="button" data-soon><span class="soon-cap">Coming soon</span><img class="gp-badge" src="/assets/img/google-play-badge.png" alt="Coming soon to Google Play" width="564" height="168" /></button>
 </header>
-<main class="page">
-  <h1>Delete your account</h1>
-  <p class="muted">Specimens, by Bueno Works</p>
-
-  <h2>How to ask</h2>
+<main id="main" class="folio-wrap">
+  <div class="legal-top"><a class="back-link" href="/">← Back to the cabinet</a></div>
+  <article class="folio">
+    <span class="tab">Account</span>
+    <header class="folio-head">
+      <img class="crest" src="/assets/img/emblem.png" alt="" />
+      <h1>Delete your account</h1>
+      <p class="meta">Specimens, by Bueno Works</p>
+    </header>
+    <div class="prose">
+<h2>How to ask</h2>
   <ol>
     <li>In the game, open <strong>Settings → Account</strong> and note your <strong>collector's name</strong>.</li>
     <li>Email <a href="mailto:support@buenoworks.app?subject=Delete%20my%20Specimens%20account">support@buenoworks.app</a> with the subject <em>Delete my Specimens account</em>. Include your collector's name, and if you signed in with Google, send it from that Google email address.</li>
@@ -34,7 +56,23 @@
 
   <h2>Ads data</h2>
   <p>Ad data is handled by Google AdMob, not by us. You can reset or delete your advertising ID in your phone's settings (Settings → Google → Ads, or Settings → Privacy → Ads).</p>
+    </div>
+    <p class="folio-sign">The Specimens team</p>
+  </article>
 </main>
-<footer><a href="/">Specimens</a> · <a href="/privacy/">Privacy</a> · <a href="mailto:support@buenoworks.app">support@buenoworks.app</a></footer>
+<footer class="site-foot">
+  <nav aria-label="Legal">
+    <a href="/">Home</a>
+    <a href="/privacy/">Privacy policy</a>
+    <a href="/delete-account/">Delete your account</a>
+    <a href="mailto:support@buenoworks.app">support@buenoworks.app</a>
+    <a href="#" data-cookies>Cookie settings</a>
+  </nav>
+  <p style="margin:0">© <span data-year="">2026</span> Bueno Works. Google Play is a trademark of Google LLC.</p>
+</footer>
+</div>
+<!--/BODY-->
+<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/analytics.js" defer></script>
 </body>
 </html>
