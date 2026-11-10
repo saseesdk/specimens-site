@@ -149,6 +149,40 @@
       cells[i].setAttribute("aria-label", "Row " + (p[0] + 1) + ", column " + (p[1] + 1) + ", " + reg[i] + " region, " + ["empty", "creature", "crossed out"][state[i]]);
     }
     function paint(i) { cells[i].classList.toggle("has", state[i] === 1); cells[i].classList.toggle("is-x", state[i] === 2); label(i); }
+    /* The guide, like the game's tutorial: the butterfly's one-square colour first, then the squares each
+       creature takes up (the player crosses them out), then the next row or colour with one free square. */
+    var order = [1, 7, 14, 8]; /* the answer, in the order it is taught */
+    function blocked(i) {
+      var A = rc(i), out = [];
+      for (var k = 0; k < cells.length; k++) {
+        if (k === i) continue;
+        var B = rc(k);
+        if (A[0] === B[0] || A[1] === B[1] || reg[k] === reg[i] || (Math.abs(A[0] - B[0]) <= 1 && Math.abs(A[1] - B[1]) <= 1)) out.push(k);
+      }
+      return out;
+    }
+    function focusOn(i) {
+      cells.forEach(function (c) { c.classList.remove("focus"); });
+      if (i !== null) cells[i].classList.add("focus");
+    }
+    function guide() {
+      var list = placed(), n = list.length;
+      if (n === N) { focusOn(null); return; }
+      var want = null;
+      for (var k = 0; k < order.length; k++) if (list.indexOf(order[k]) < 0) { want = order[k]; break; }
+      if (n === 0) { cap.textContent = "This colour has only one square, so the butterfly must live there. Double-tap it."; focusOn(want); return; }
+      var open = 0;
+      list.forEach(function (p) { blocked(p).forEach(function (k) { if (state[k] === 0) open++; }); });
+      if (open > 0) {
+        cap.textContent = n === 1
+          ? "It owns its row, its column and the squares touching it. Tap each one to cross it out. A tap is only a pencil note."
+          : "Cross out what this creature takes up too: its row, column, colour and the squares around it.";
+        focusOn(null); return;
+      }
+      cap.textContent = n === N - 1 ? "One creature left. Double-tap the only square without a cross."
+        : "Look! A row or a colour has just one free square. Double-tap it.";
+      focusOn(want);
+    }
     function placed() { var out = []; state.forEach(function (s, i) { if (s === 1) out.push(i); }); return out; }
     function why(i) {
       var A = rc(i), list = placed();
@@ -179,8 +213,7 @@
         return;
       }
       state[i] = 1; paint(i);
-      var n = refresh();
-      if (n < N) cap.textContent = (N - n) + " left to place.";
+      if (refresh() < N) guide();
     }
     var last = null;
     cells.forEach(function (c, i) {
@@ -190,15 +223,16 @@
         if (last && last.i === i && now - last.t < 340) { state[i] = last.prev; paint(i); last = null; place(i); return; }
         last = { i: i, t: now, prev: state[i] };
         state[i] = state[i] === 2 ? 0 : 2; paint(i);
-        if (placed().length < N) cap.textContent = state[i] === 2 ? "Crossed out. Double-tap a square to place a creature." : "Four creatures to place.";
+        if (placed().length < N) guide();
       });
     });
     $("#play-reset").addEventListener("click", function () {
       state = state.map(function () { return 0; }); last = null;
       cells.forEach(function (c, i) { c.classList.remove("has", "is-x", "bad", "shake"); label(i); });
-      refresh(); cap.textContent = "Four creatures to place.";
+      refresh(); guide();
     });
     cells.forEach(function (c, i) { label(i); });
+    guide();
   })();
 
   /* ---------- "Coming soon" buttons: a short note until launch ---------- */
