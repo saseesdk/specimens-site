@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Specimens — a logic puzzle with a living cabinet of curiosities</title>
-<meta name="description" content="Place one creature in every row, column and region, and never let two touch. 1,000+ hand-made logic puzzles, 18 living creatures to collect, ranked Two by Two play. Free on Google Play." />
+<meta name="description" content="Place one creature in every row, column and region, and never let two touch. 1,000+ hand-made logic puzzles, 18 living creatures to collect, and live races with friends. Free on Google Play." />
 <meta name="theme-color" content="#2b1209" />
 <meta property="og:title" content="Specimens — a cabinet of living curiosities" />
 <meta property="og:description" content="A logic puzzle where every answer is alive. Free on Google Play." />
@@ -24,6 +24,156 @@
 </head>
 <body>
 <!--BODY-->
+<style id="race-css">
+/* ===== Race a Friend drawer (self-contained; can move into site.css) ===== */
+.race{--fd:"IM Fell English","EB Garamond",Georgia,serif;--fb:"EB Garamond",Georgia,serif;--ink:#2b1a0e;--pa:#f4e9d0;--br:#c9a24a;--br2:#f1d98a;--br3:#7a5418}
+.rx-defs{position:absolute;width:0;height:0;overflow:hidden}
+.race-intro{text-align:center;max-width:780px;margin:0 auto clamp(22px,3.5vw,40px)}
+.race-intro h2{font-size:clamp(2rem,5.4vw,3.6rem);line-height:1.04}
+.race-top{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(26px,4.5vw,60px);align-items:center;max-width:1120px;margin:0 auto}
+@media (max-width:860px){.race-top{grid-template-columns:1fr}}
+
+/* --- track scene --- */
+.track{margin:0 auto;max-width:560px;position:relative}
+.track-frame{position:relative;padding:clamp(10px,2.6%,18px);border-radius:14px;
+  background:repeating-linear-gradient(91deg,rgba(0,0,0,.09) 0 2px,transparent 2px 9px),repeating-radial-gradient(ellipse at 28% -30%,rgba(255,196,130,.07) 0 5px,transparent 5px 13px),linear-gradient(180deg,#6d2d12,#45190a);
+  border:2px solid var(--br);box-shadow:inset 0 0 0 1px var(--br2),0 0 0 1px #4a2e08,0 22px 46px rgba(20,6,2,.5)}
+.track-frame .cn{position:absolute;width:22px;height:22px;border:3px solid var(--br2);z-index:2;filter:drop-shadow(0 1px 1px rgba(0,0,0,.5))}
+.cn.tl{left:5px;top:5px;border-right:0;border-bottom:0}.cn.tr{right:5px;top:5px;border-left:0;border-bottom:0}
+.cn.bl{left:5px;bottom:5px;border-right:0;border-top:0}.cn.br{right:5px;bottom:5px;border-left:0;border-top:0}
+.track-stage{position:relative;aspect-ratio:1/1.04;border-radius:6px;overflow:hidden;container-type:inline-size;background:#3a1709;box-shadow:inset 0 0 0 2px #2a0f05}
+.tk-grid{position:absolute;inset:3%;display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:repeat(7,1fr);gap:1.2%}
+.tk-grid i{border-radius:7%;box-shadow:inset 0 -2px 0 rgba(0,0,0,.12)}
+.g-cr{background:#efe0c2}.g-ro{background:#e8a995}.g-ye{background:#e9c46e}.g-bl{background:#9fbccb}.g-gr{background:#a9c08a}.g-te{background:#7fc4ac}.g-pu{background:#c9b0d6}
+.tk-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,18,9,.42),rgba(43,18,9,.6))}
+.tk-finish{position:absolute;left:3%;right:3%;top:calc(28% - .7cqw);height:1.4cqw;border-radius:2cqw;background:linear-gradient(180deg,#f6e2a0,#c9a24a 55%,#7a5418);box-shadow:0 .4cqw .8cqw rgba(0,0,0,.45)}
+.tk-finish::before,.tk-finish::after{content:"";position:absolute;top:50%;width:2.6cqw;height:2.6cqw;margin-top:-1.3cqw;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3bf,#c9a24a 55%,#7a5418)}
+.tk-finish::before{left:-.6cqw}.tk-finish::after{right:-.6cqw}
+.tk-finish span{position:absolute;left:50%;top:2cqw;transform:translateX(-50%);font:600 3.3cqw/1 var(--fb);letter-spacing:.32em;text-transform:uppercase;color:#f1d98a;text-shadow:0 1px 2px #000}
+.tk-watch{position:absolute;left:50%;top:2.5%;width:15cqw;transform:translateX(-50%);text-align:center}
+.tk-watch img{display:block;width:100%;height:auto;filter:drop-shadow(0 .8cqw 1cqw rgba(0,0,0,.5))}
+.tk-time{display:block;margin:-1cqw auto 0;width:max-content;padding:.4cqw 2cqw;border-radius:1cqw;background:linear-gradient(180deg,#f6e2a0,#c9a24a 60%,#a17a2a);border:.3cqw solid #7a5418;font:700 3.8cqw/1.1 var(--fb);color:var(--ink);font-variant-numeric:tabular-nums}
+.lane{position:absolute;top:0;bottom:0;width:30%}
+.l1{left:5.5%}.l2{right:5.5%}
+.col{position:absolute;left:14%;right:14%;bottom:10%;height:calc(4% + var(--p)*58%);transition:height .5s cubic-bezier(.34,1.5,.64,1);
+  background:repeating-linear-gradient(90deg,rgba(0,0,0,.14) 0 1px,transparent 1px 6px),linear-gradient(90deg,#5a1d0c,#8e3417 45%,#5a1d0c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.35),0 0 2cqw rgba(0,0,0,.4)}
+.col::before{content:"";position:absolute;left:-12%;right:-12%;top:-1.6cqw;height:1.8cqw;border-radius:.4cqw;background:linear-gradient(180deg,#f6e2a0,#c9a24a 55%,#7a5418);box-shadow:0 .4cqw .6cqw rgba(0,0,0,.4)}
+.av{position:absolute;left:50%;width:62%;aspect-ratio:1;bottom:calc(10% + 4% + var(--p)*58% + 1.4cqw);transform:translateX(-50%);transition:bottom .5s cubic-bezier(.34,1.5,.64,1),filter .4s;
+  border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 40% 35%,#fffaf0,#eadbb6);box-shadow:0 0 0 1.1cqw #d9b45a,0 0 0 1.6cqw #6b4a14,0 1.4cqw 2.4cqw rgba(0,0,0,.55)}
+.av{min-height:0}
+.av>img{position:absolute;left:50%;top:50%;width:auto;height:70%;max-width:80%;object-fit:contain;transform:translate(-50%,-50%)}
+.l2 .av>img{height:68%;max-width:86%}
+.lane.hit .av{animation:rx-hit .5s ease-out}
+@keyframes rx-hit{0%{box-shadow:0 0 0 1.1cqw #d9b45a,0 0 0 1.6cqw #6b4a14,0 0 0 0 rgba(255,230,150,.9)}100%{box-shadow:0 0 0 1.1cqw #d9b45a,0 0 0 1.6cqw #6b4a14,0 0 0 5cqw rgba(255,230,150,0)}}
+.av .rm{position:absolute;right:-22%;bottom:-30%;width:42%;opacity:0;filter:drop-shadow(0 .6cqw .6cqw rgba(0,0,0,.5))}
+.score{position:absolute;left:2%;right:2%;bottom:1.6%;height:7%;display:flex;align-items:center;justify-content:center;gap:1.6cqw;border-radius:.8cqw;
+  background:linear-gradient(180deg,#fbf3df,#ead9b1);color:var(--ink);box-shadow:0 .4cqw .8cqw rgba(0,0,0,.4);font:600 3.6cqw/1 var(--fb);white-space:nowrap}
+.score em{font-style:normal;font-variant-numeric:tabular-nums;opacity:.8}
+.pot{position:absolute;left:50%;bottom:1.6%;width:24%;transform:translateX(-50%);text-align:center}
+.pot svg{display:block;width:100%;height:auto;filter:drop-shadow(0 .8cqw 1cqw rgba(0,0,0,.45))}
+.pot-l{display:block;font:600 3.2cqw/1.2 var(--fb);color:#f1d98a;letter-spacing:.14em;text-transform:uppercase;text-shadow:0 1px 2px #000}
+.pot-l b{color:#fff3cf;letter-spacing:.04em}
+.track.won .pot svg{animation:rx-pot .6s ease-out}
+@keyframes rx-pot{40%{transform:translateY(-6%) scale(1.06)}}
+.fly svg{position:absolute;left:47%;top:80%;width:6cqw;height:6cqw;opacity:0}
+.track.won .fly svg{animation:rx-coin 1s cubic-bezier(.5,0,.4,1) both}
+.track.won .fly svg:nth-child(2){animation-delay:.12s}.track.won .fly svg:nth-child(3){animation-delay:.24s}.track.won .fly svg:nth-child(4){animation-delay:.36s}.track.won .fly svg:nth-child(5){animation-delay:.48s}
+@keyframes rx-coin{0%{left:47%;top:80%;opacity:0;transform:scale(.7)}12%{opacity:1}55%{left:34%;top:30%;transform:scale(1.15) rotate(160deg)}100%{left:18%;top:16%;opacity:0;transform:scale(.5) rotate(320deg)}}
+.tk-plus{position:absolute;left:20.5%;top:37%;transform:translate(-50%,0) scale(.5);opacity:0;padding:.6cqw 2.2cqw;border-radius:5cqw;background:linear-gradient(180deg,#fbf3df,#ead9b1);color:#1f6b35;font:700 5cqw/1.1 var(--fb);box-shadow:0 .6cqw 1.4cqw rgba(0,0,0,.5)}
+.track.won .tk-plus{animation:rx-plus .6s 1s cubic-bezier(.34,1.6,.64,1) both}
+@keyframes rx-plus{to{opacity:1;transform:translate(-50%,0) scale(1)}}
+.track.won .l1 .rm{animation:rx-drop .8s .15s cubic-bezier(.34,1.5,.64,1) both}
+@keyframes rx-drop{0%{opacity:0;transform:translateY(-160%) rotate(-25deg)}100%{opacity:1;transform:none}}
+.track.won .l1 .av{box-shadow:0 0 0 1.1cqw #e9c45a,0 0 0 1.6cqw #6b4a14,0 0 6cqw rgba(255,214,110,.7)}
+.track.won .l2 .av{filter:saturate(.55) brightness(.8)}
+.count{position:absolute;left:50%;top:57%;width:26cqw;aspect-ratio:1;margin:-13cqw 0 0 -13cqw;border-radius:50%;display:grid;place-items:center;opacity:0;pointer-events:none;
+  background:radial-gradient(circle at 40% 35%,#fffaf0,#e9d29a);box-shadow:0 0 0 1.4cqw #d9b45a,0 0 0 2cqw #6b4a14,0 2cqw 4cqw rgba(0,0,0,.6);font:400 15cqw/1 var(--fd);color:var(--ink)}
+.count.go{font-size:9cqw}
+.count.pop{animation:rx-pop .8s ease-out both}
+@keyframes rx-pop{0%{opacity:0;transform:scale(.4)}22%{opacity:1;transform:scale(1.08)}70%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.3)}}
+.perch{position:absolute;right:-3%;top:-6%;width:clamp(64px,19%,108px);z-index:3;transform:rotate(16deg)}
+.perch .creature{display:block;position:relative;width:100%;padding:0;border:0;background:none;cursor:pointer}
+.perch .creature .base{display:block;width:100%;height:auto}
+.perch .rig .ly{position:absolute;left:0;top:0;width:100%;height:100%}
+.track figcaption{margin-top:14px}
+
+/* --- steps --- */
+.race-steps{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:none}
+.race-steps li{display:grid;grid-template-columns:66px 1fr;gap:16px;align-items:center;padding:12px 18px 12px 12px;border-radius:10px;color:var(--ink);
+  background:linear-gradient(180deg,#fbf4e2,#efe1c1);border:1px solid rgba(122,84,24,.45);box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 8px 18px rgba(43,18,9,.14)}
+.st-ic{position:relative;width:66px;height:66px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 40% 35%,#fffaf0,#eadbb6);box-shadow:0 0 0 3px #d9b45a,0 0 0 4.5px #6b4a14}
+.st-n{position:absolute;left:-6px;top:-6px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font:italic 600 13px/1 var(--fb);color:var(--ink);background:linear-gradient(180deg,#f6e2a0,#c9a24a);border:1px solid #7a5418}
+.st-tx b{display:block;font:600 1.22rem/1.15 var(--fb)}
+.st-tx span{display:block;font:400 1.02rem/1.3 var(--fb);color:#4a3320}
+.ic-pair img{position:absolute;height:40px;width:auto;top:13px}
+.ic-pair img:first-child{left:9px}.ic-pair img:nth-child(2){right:5px;height:34px;top:17px}
+.ic-ten svg{position:absolute;inset:0;width:100%;height:100%}
+.ic-ten .ring{stroke-dasharray:157.1;animation:rx-ten 10s linear infinite}
+@keyframes rx-ten{from{stroke-dashoffset:0}to{stroke-dashoffset:157.1}}
+.ic-ten b{font:700 20px/1 var(--fb);font-variant-numeric:tabular-nums}
+.ic-321 b{position:absolute;inset:0;display:grid;place-items:center;font:400 34px/1 var(--fd);opacity:0;animation:rx-321 3s infinite}
+.ic-321 b:nth-child(2){animation-delay:1s}.ic-321 b:nth-child(3){animation-delay:2s}
+@keyframes rx-321{0%{opacity:0;transform:scale(.6)}8%{opacity:1;transform:scale(1)}30%{opacity:1}36%,100%{opacity:0;transform:scale(1.2)}}
+.ic-pot svg{width:48px;height:48px;animation:rx-bob 3s ease-in-out infinite}
+@keyframes rx-bob{50%{transform:translateY(-3px)}}
+
+/* --- race sizes on baize --- */
+.baize{position:relative;max-width:980px;margin:clamp(46px,7vw,84px) auto 0;padding:clamp(18px,3.4vw,34px) clamp(12px,3vw,34px) clamp(16px,2.6vw,26px);border-radius:6px;
+  background:radial-gradient(ellipse at 50% 20%,rgba(255,255,255,.07),transparent 60%),repeating-radial-gradient(circle at 30% 40%,rgba(0,0,0,.05) 0 1px,transparent 1px 3px),linear-gradient(180deg,#24563b,#173a27);
+  border:3px solid var(--br);box-shadow:inset 0 0 0 1px var(--br2),0 0 0 9px #5c220d,0 0 0 11px var(--br3),0 26px 50px rgba(20,6,2,.4)}
+.baize-ttl{margin:0 0 clamp(14px,2.4vw,24px);text-align:center;font:400 clamp(1.6rem,3.4vw,2.4rem)/1.1 var(--fd);color:#fbf3df;text-shadow:0 2px 3px rgba(0,0,0,.4)}
+.stakes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,2vw,20px)}
+.stake{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:clamp(12px,2vw,20px) 6px clamp(14px,2vw,20px);border-radius:12px;text-align:center;color:#f4e9d0;
+  background:rgba(0,0,0,.16);border:1px solid rgba(241,217,138,.3);transition:transform .35s cubic-bezier(.34,1.5,.64,1),background .3s,border-color .3s}
+.stake:hover{transform:translateY(-5px);background:rgba(241,217,138,.14);border-color:var(--br2)}
+.stake .md{width:clamp(42px,8vw,72px);height:auto;transform-origin:50% 0;animation:rx-sway 5s ease-in-out infinite;filter:drop-shadow(0 4px 4px rgba(0,0,0,.4))}
+.stake:nth-child(2) .md{animation-delay:-1.6s}.stake:nth-child(3) .md{animation-delay:-3.2s}
+@keyframes rx-sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.st-name{font:600 clamp(1.15rem,2.8vw,1.95rem)/1.1 var(--fb);color:#fffaf0;margin-top:4px}
+.st-stake{display:inline-flex;align-items:center;gap:.3em;font:700 clamp(.98rem,2.2vw,1.4rem)/1.2 var(--fb);color:#f6dc8c}
+.ci{width:1.05em;height:1.05em;flex:none}
+.st-meta{font:400 clamp(.9rem,1.9vw,1.15rem)/1.2 var(--fb);color:#efe3c8;font-variant-numeric:tabular-nums}
+.st-win{margin-top:6px;padding:2px 10px;border-radius:20px;font:600 clamp(.72rem,1.5vw,.88rem)/1.5 var(--fb);letter-spacing:.04em;color:#173a27;background:linear-gradient(180deg,#f6e2a0,#d2ac55)}
+.st-lock{display:inline-flex;align-items:center;gap:5px;font:italic 400 clamp(.75rem,1.6vw,.92rem)/1.2 var(--fb);color:#f1d98a;margin-top:4px}
+.st-lock svg{width:.9em;height:.9em;flex:none}
+.baize-note{margin:clamp(14px,2.4vw,22px) 0 0;text-align:center;font:italic 400 clamp(1.05rem,2.2vw,1.3rem)/1.3 var(--fb);color:#f6dc8c}
+@media (max-width:420px){.st-win{padding:2px 6px}.stake{padding-inline:3px}}
+
+/* --- rules / extras --- */
+.race-foot{max-width:980px;margin:clamp(30px,4.5vw,46px) auto 0}
+.race-rules{list-style:none;margin:0 0 clamp(22px,3.4vw,32px);padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 14px}
+.race-rules li{position:relative;padding:8px 16px 8px 30px;font:600 .86rem/1.2 var(--fb);letter-spacing:.07em;text-transform:uppercase;color:var(--ink);
+  background:linear-gradient(180deg,#fbf4e2,#ecdcb8);clip-path:polygon(14px 0,100% 0,100% 100%,14px 100%,0 50%);filter:drop-shadow(0 3px 4px rgba(43,18,9,.22));transform:rotate(-1.2deg);transition:transform .3s}
+.race-rules li:nth-child(even){transform:rotate(1deg)}
+.race-rules li:hover{transform:rotate(0) translateY(-2px)}
+.race-rules li::before{content:"";position:absolute;left:13px;top:50%;width:9px;height:9px;margin-top:-4.5px;border-radius:50%;background:radial-gradient(circle,#3a1709 30%,#c9a24a 34%,#7a5418)}
+.race-extra{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:stretch}
+@media (max-width:720px){.race-extra{grid-template-columns:1fr}}
+.plate{position:relative;display:flex;align-items:center;gap:14px;padding:14px 26px;border-radius:8px;color:var(--ink);
+  background:linear-gradient(180deg,#f6e2a0,#d8b25c 55%,#b8893a);border:2px solid #7a5418;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 10px 20px rgba(43,18,9,.25)}
+.plate::before,.plate::after{content:"";position:absolute;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fff3bf,#7a5418);box-shadow:inset 0 0 0 1px rgba(0,0,0,.3)}
+.plate::before{left:8px}.plate::after{right:8px}
+.pl-pair{display:flex;flex:none}
+.pl-pair img{height:46px;width:auto}
+.pl-pair img+img{margin-left:-4px}
+.pl-tx b{display:block;font:600 1.2rem/1.1 var(--fb)}
+.pl-tx span{display:block;font:400 .98rem/1.3 var(--fb)}
+.coin-note{display:flex;align-items:center;gap:12px;margin:0;padding:14px 18px;border-radius:8px;font:400 .98rem/1.35 var(--fb);color:var(--ink);background:#fbf4e2;border:1.5px dashed #9a7430}
+.coin-note .ci{width:30px;height:30px}
+.coin-note b{font-weight:700}
+
+/* hero line */
+.hero-race{margin:.5em 0 0;font-style:italic;font-size:clamp(1.05rem,2.2vw,1.3rem);letter-spacing:.02em}
+.hero-race a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.18em}
+
+@media (prefers-reduced-motion:reduce){
+  .race *,.race *::before{animation:none!important;transition:none!important}
+  .ic-321 b:first-child{opacity:1}
+  .ic-ten .ring{stroke-dashoffset:40}
+  .track.won .l1 .rm,.track.won .tk-plus{opacity:1}
+  .track.won .tk-plus{transform:translate(-50%,0)}
+}
+</style>
 <a class="skip" href="#main">Skip to content</a>
 
 <div class="lamp-glow" aria-hidden="true"></div>
@@ -35,9 +185,9 @@
   <nav class="site-nav" aria-label="Sections">
     <a href="#puzzle">The Puzzle</a>
     <a href="#try">Try One</a>
+    <a href="#race">Race a Friend</a>
     <a href="#collection">The Collection</a>
     <a href="#rare">Rare Finds</a>
-    <a href="#ranked">Two by Two</a>
   </nav>
   <a class="play play-live gp" href="https://play.google.com/store/apps/details?id=com.vaultrush.game" target="_blank" rel="noopener" data-play=""><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Get it on Google Play" width="564" height="168" /></a><button class="play play-soon gp" type="button" data-soon><span class="soon-cap">Coming soon</span><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Coming soon to Google Play" width="564" height="168" /></button>
 </header>
@@ -50,6 +200,7 @@
       <p class="eyebrow">From the cabinet of a Victorian naturalist</p>
       <div class="nameplate"><h1 id="hero-title">Specimens</h1></div>
       <p class="tagline">The logic puzzle where every answer is alive.</p>
+      <p class="hero-race">Collect living creatures. <a href="#race">Race your friends.</a></p>
     </div>
 
     <div class="hero-case">
@@ -75,6 +226,7 @@
         <li>Free</li>
         <li>1,000+ puzzles</li>
         <li>18 living creatures</li>
+        <li>Race your friends</li>
       </ul>
       <a class="scroll-cue" href="#puzzle">Open the drawers<span></span></a>
     </div>
@@ -207,11 +359,138 @@
   </div>
 </section>
 
-<!-- ============ III. THE COLLECTION ============ -->
+<!-- ============ III. RACE A FRIEND ============ -->
+<section class="drawer race" id="race" aria-labelledby="d-race-title">
+  <div class="drawer-front">
+    <span class="pull" aria-hidden="true"></span>
+    <div class="label-holder"><span class="card"><span class="no">Drawer No. III · Head to head</span><span class="ttl" id="d-race-title">Race a Friend</span></span></div>
+    <span class="pull right" aria-hidden="true"></span>
+  </div>
+  <div class="drawer-body">
+    <svg class="rx-defs" width="0" height="0" aria-hidden="true" focusable="false">
+      <defs>
+        <radialGradient id="rx-gold" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff3bf"/><stop offset=".45" stop-color="#e2b84e"/><stop offset="1" stop-color="#8a5f17"/></radialGradient>
+        <radialGradient id="rx-silver" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#c6cbd2"/><stop offset="1" stop-color="#6d737c"/></radialGradient>
+        <radialGradient id="rx-bronze" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#ffd2a8"/><stop offset=".5" stop-color="#c47a45"/><stop offset="1" stop-color="#6e3518"/></radialGradient>
+        <linearGradient id="rx-brass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6e2a0"/><stop offset=".5" stop-color="#c9a24a"/><stop offset="1" stop-color="#7a5418"/></linearGradient>
+        <symbol id="rx-coin" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18.5" fill="#7a5418"/><circle cx="20" cy="20" r="17" fill="url(#rx-gold)"/><circle cx="20" cy="20" r="12.5" fill="none" stroke="#8a5f17" stroke-width="1.2" opacity=".7"/><g fill="#a9781f" opacity=".85"><circle cx="20" cy="15.2" r="3.6"/><circle cx="15.4" cy="20.4" r="3.6"/><circle cx="24.6" cy="20.4" r="3.6"/><rect x="19.2" y="20" width="1.6" height="8" rx=".8"/></g></symbol>
+      </defs>
+    </svg>
+
+    <div class="race-intro reveal d1">
+      <p class="kicker">Live races with friends</p>
+      <h2>Same board. Same moment. <em>First to solve wins.</em></h2>
+    </div>
+
+    <div class="race-top">
+      <!-- The race scene: illustration only, plays in place -->
+      <div class="reveal d1">
+        <figure class="track" id="track">
+          <div class="track-frame">
+            <span class="cn tl" aria-hidden="true"></span><span class="cn tr" aria-hidden="true"></span><span class="cn bl" aria-hidden="true"></span><span class="cn br" aria-hidden="true"></span>
+            <div class="track-stage" aria-hidden="true">
+              <div class="tk-grid"><i class="g-cr"></i><i class="g-cr"></i><i class="g-ro"></i><i class="g-ro"></i><i class="g-ro"></i><i class="g-ro"></i><i class="g-ro"></i><i class="g-cr"></i><i class="g-cr"></i><i class="g-ro"></i><i class="g-ye"></i><i class="g-ro"></i><i class="g-ro"></i><i class="g-bl"></i><i class="g-gr"></i><i class="g-cr"></i><i class="g-cr"></i><i class="g-ye"></i><i class="g-ro"></i><i class="g-ro"></i><i class="g-bl"></i><i class="g-gr"></i><i class="g-gr"></i><i class="g-gr"></i><i class="g-ye"></i><i class="g-bl"></i><i class="g-bl"></i><i class="g-bl"></i><i class="g-te"></i><i class="g-ye"></i><i class="g-ye"></i><i class="g-ye"></i><i class="g-ye"></i><i class="g-ye"></i><i class="g-pu"></i><i class="g-te"></i><i class="g-ye"></i><i class="g-ye"></i><i class="g-ye"></i><i class="g-ye"></i><i class="g-ye"></i><i class="g-pu"></i><i class="g-te"></i><i class="g-te"></i><i class="g-te"></i><i class="g-ye"></i><i class="g-ye"></i><i class="g-ye"></i><i class="g-pu"></i></div>
+              <div class="tk-shade"></div>
+              <div class="tk-finish"><span>Finish</span></div>
+              <div class="tk-watch"><img src="assets/img/watch.png" alt="" width="178" height="220" /><b class="tk-time" id="tk-time">4:00</b></div>
+
+              <div class="lane l1" style="--p:0">
+                <div class="col"></div>
+                <div class="av"><img src="assets/img/owl.png" alt="" width="135" height="213" />
+                  <svg class="rm" viewBox="0 0 60 90"><path d="M14 0h12l8 40H22z" fill="#b8322a"/><path d="M34 0h12L38 40H26z" fill="#b8322a"/><path d="M18 0h4l8 40h-4zM38 0h4l-8 40h-4z" fill="#f4e9d0"/><circle cx="30" cy="60" r="24" fill="none" stroke="#8a5f17" stroke-width="4" stroke-dasharray="2.4 2"/><circle cx="30" cy="60" r="21" fill="url(#rx-gold)"/><circle cx="30" cy="60" r="15" fill="none" stroke="#fff3bf" stroke-width="1" opacity=".55"/></svg>
+                </div>
+                <div class="score"><b class="who">You</b><em class="sc">0/7</em></div>
+              </div>
+
+              <div class="lane l2" style="--p:0">
+                <div class="col"></div>
+                <div class="av"><img src="assets/img/peacock.png" alt="" width="236" height="239" /></div>
+                <div class="score"><b class="who">Maya</b><em class="sc">0/7</em></div>
+              </div>
+
+              <div class="pot">
+                <svg viewBox="0 0 120 84"><ellipse cx="60" cy="78" rx="26" ry="5" fill="#2a0f05" opacity=".5"/><path d="M48 76h24l-4-10H52z" fill="url(#rx-brass)"/><rect x="56" y="52" width="8" height="16" fill="url(#rx-brass)"/><path d="M14 46h92c-4 10-20 12-46 12S18 56 14 46z" fill="url(#rx-brass)"/><ellipse cx="60" cy="46" rx="46" ry="6" fill="#f6e2a0"/><use href="#rx-coin" x="24" y="24" width="24" height="24"/><use href="#rx-coin" x="70" y="24" width="24" height="24"/><use href="#rx-coin" x="40" y="18" width="24" height="24"/><use href="#rx-coin" x="56" y="14" width="24" height="24"/><use href="#rx-coin" x="47" y="2" width="24" height="24"/></svg>
+                <span class="pot-l">Pot <b>400</b></span>
+              </div>
+
+              <div class="fly"><svg><use href="#rx-coin"/></svg><svg><use href="#rx-coin"/></svg><svg><use href="#rx-coin"/></svg><svg><use href="#rx-coin"/></svg><svg><use href="#rx-coin"/></svg></div>
+              <div class="tk-plus">+400</div>
+              <div class="count" id="tk-count"></div>
+            </div>
+            <div class="perch"><button class="creature rig rigw luna" type="button" aria-label="Luna moth. Tap to wake it." style="--d:-1.4s"><img class="base" src="assets/img/rig/moth/base.webp" alt="" width="209" height="200" /><img class="ly wgl" src="assets/img/rig/moth/wing_left.webp" alt="" style="transform-origin:45.4% 31.5%" /><img class="ly wgr" src="assets/img/rig/moth/wing_right.webp" alt="" style="transform-origin:54.6% 31.5%" /><img class="ly anl" src="assets/img/rig/moth/antenna_left.webp" alt="" style="transform-origin:47.8% 19.9%" /><img class="ly anr" src="assets/img/rig/moth/antenna_right.webp" alt="" style="transform-origin:52.2% 19.9%" /><img class="ly bd" src="assets/img/rig/moth/body.webp" alt="" style="transform-origin:50.0% 38.6%" /><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span><span class="spark s5"></span></button></div>
+          </div>
+          <figcaption class="board-caption">The owl and the peacock race on the same board. First correct answer takes the pot.</figcaption>
+        </figure>
+        <div class="board-tools"><button class="btn-ghost" type="button" id="race-replay">Race again</button></div>
+      </div>
+
+      <!-- How it works -->
+      <div class="reveal d2">
+        <ol class="race-steps" aria-label="How a race works">
+          <li><span class="st-ic ic-pair" aria-hidden="true"><img src="assets/img/owl.png" alt="" /><img src="assets/img/peacock.png" alt="" /><i class="st-n">i</i></span><span class="st-tx"><b>Add a friend</b><span>Swap a short friend code.</span></span></li>
+          <li><span class="st-ic ic-ten" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="25" fill="none" stroke="rgba(122,84,24,.25)" stroke-width="5"/><circle class="ring" cx="32" cy="32" r="25" fill="none" stroke="url(#rx-brass)" stroke-width="5" stroke-linecap="round" transform="rotate(-90 32 32)"/></svg><b>10</b><i class="st-n">ii</i></span><span class="st-tx"><b>Send a race invite</b><span>They have 10 seconds to accept.</span></span></li>
+          <li><span class="st-ic ic-321" aria-hidden="true"><b>3</b><b>2</b><b>1</b><i class="st-n">iii</i></span><span class="st-tx"><b>3 · 2 · 1</b><span>You both solve the same board.</span></span></li>
+          <li><span class="st-ic ic-pot" aria-hidden="true"><svg viewBox="0 0 64 64"><use href="#rx-coin" x="8" y="26" width="26" height="26"/><use href="#rx-coin" x="30" y="26" width="26" height="26"/><use href="#rx-coin" x="19" y="10" width="26" height="26"/></svg><i class="st-n">iv</i></span><span class="st-tx"><b>First to solve wins</b><span>The first correct answer takes the pot.</span></span></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Race sizes -->
+    <div class="baize reveal d1">
+      <h3 class="baize-ttl">Pick your race</h3>
+      <ul class="stakes">
+        <li class="stake">
+          <svg class="md" viewBox="0 0 60 90" aria-hidden="true"><path d="M14 0h12l8 40H22z" fill="#2f7a4c"/><path d="M34 0h12L38 40H26z" fill="#2f7a4c"/><path d="M18 0h4l8 40h-4zM38 0h4l-8 40h-4z" fill="#f4e9d0"/><circle cx="30" cy="60" r="24" fill="none" stroke="#6e3518" stroke-width="4" stroke-dasharray="2.4 2"/><circle cx="30" cy="60" r="21" fill="url(#rx-bronze)"/></svg>
+          <b class="st-name">Bout</b>
+          <span class="st-stake"><svg class="ci" aria-hidden="true"><use href="#rx-coin"/></svg>Stake 50</span>
+          <span class="st-meta">6×6 · 3 min</span>
+          <span class="st-win">Win 100</span>
+        </li>
+        <li class="stake">
+          <svg class="md" viewBox="0 0 60 90" aria-hidden="true"><path d="M14 0h12l8 40H22z" fill="#23356e"/><path d="M34 0h12L38 40H26z" fill="#23356e"/><path d="M18 0h4l8 40h-4zM38 0h4l-8 40h-4z" fill="#f4e9d0"/><circle cx="30" cy="60" r="24" fill="none" stroke="#6d737c" stroke-width="4" stroke-dasharray="2.4 2"/><circle cx="30" cy="60" r="21" fill="url(#rx-silver)"/></svg>
+          <b class="st-name">Duel</b>
+          <span class="st-stake"><svg class="ci" aria-hidden="true"><use href="#rx-coin"/></svg>Stake 200</span>
+          <span class="st-meta">7×7 · 4 min</span>
+          <span class="st-win">Win 400</span>
+        </li>
+        <li class="stake">
+          <svg class="md" viewBox="0 0 60 90" aria-hidden="true"><path d="M14 0h12l8 40H22z" fill="#b8322a"/><path d="M34 0h12L38 40H26z" fill="#b8322a"/><path d="M18 0h4l8 40h-4zM38 0h4l-8 40h-4z" fill="#f4e9d0"/><circle cx="30" cy="60" r="24" fill="none" stroke="#8a5f17" stroke-width="4" stroke-dasharray="2.4 2"/><circle cx="30" cy="60" r="21" fill="url(#rx-gold)"/></svg>
+          <b class="st-name">Showdown</b>
+          <span class="st-stake"><svg class="ci" aria-hidden="true"><use href="#rx-coin"/></svg>Stake 500</span>
+          <span class="st-meta">9×9 · 5 min</span>
+          <span class="st-win">Win 1,000</span>
+          <span class="st-lock"><svg viewBox="0 0 12 14" aria-hidden="true"><path d="M3.5 6V4a2.5 2.5 0 0 1 5 0v2" fill="none" stroke="#f1d98a" stroke-width="1.6"/><rect x="1.5" y="6" width="9" height="7" rx="1.5" fill="#f1d98a"/></svg>Opens at level 25</span>
+        </li>
+      </ul>
+      <p class="baize-note">The winner takes both stakes.</p>
+    </div>
+
+    <!-- Rules, Two by Two, coin note -->
+    <div class="race-foot reveal d2">
+      <ul class="race-rules" aria-label="Race rules">
+        <li>One slip ends the race</li>
+        <li>No hints. No lives.</li>
+        <li>If nobody finishes, both stakes are lost</li>
+        <li>Races open at level 15</li>
+      </ul>
+      <div class="race-extra">
+        <div class="plate">
+          <span class="pl-pair" aria-hidden="true"><img src="assets/img/seahorse.png" alt="" /><img src="assets/img/seahorse.png" alt="" /></span>
+          <span class="pl-tx"><b>Two by Two</b><span>Two creatures in every row, column and region. Opens at level 10.</span></span>
+        </div>
+        <p class="coin-note"><svg class="ci" aria-hidden="true"><use href="#rx-coin"/></svg><span><b>Virtual coins only.</b> Coins can't be bought or cashed out, and there is no real-money prize.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ol id="ladder" hidden></ol><!-- empty hook kept so older site.js code that looked for it never errors; safe to delete -->
+
+<!-- ============ IV. THE COLLECTION ============ -->
 <section class="drawer" id="collection" aria-labelledby="d3-title">
   <div class="drawer-front">
     <span class="pull" aria-hidden="true"></span>
-    <div class="label-holder"><span class="card"><span class="no">Drawer No. III</span><span class="ttl" id="d3-title">The Living Collection</span></span></div>
+    <div class="label-holder"><span class="card"><span class="no">Drawer No. IV</span><span class="ttl" id="d3-title">The Living Collection</span></span></div>
     <span class="pull right" aria-hidden="true"></span>
   </div>
   <div class="drawer-body">
@@ -233,11 +512,11 @@
   </div>
 </section>
 
-<!-- ============ IV. RARE FINDS ============ -->
+<!-- ============ V. RARE FINDS ============ -->
 <section class="drawer" id="rare" aria-labelledby="d4-title">
   <div class="drawer-front">
     <span class="pull" aria-hidden="true"></span>
-    <div class="label-holder"><span class="card"><span class="no">Drawer No. IV · Locked</span><span class="ttl" id="d4-title">Rare Finds</span></span></div>
+    <div class="label-holder"><span class="card"><span class="no">Drawer No. V · Locked</span><span class="ttl" id="d4-title">Rare Finds</span></span></div>
     <span class="pull right" aria-hidden="true"></span>
   </div>
   <div class="drawer-body dark">
@@ -268,105 +547,6 @@
   </div>
 </section>
 
-<!-- ============ V. TWO BY TWO ============ -->
-<section class="drawer" id="ranked" aria-labelledby="d5-title">
-  <div class="drawer-front">
-    <span class="pull" aria-hidden="true"></span>
-    <div class="label-holder"><span class="card"><span class="no">Drawer No. V · Ranked</span><span class="ttl" id="d5-title">Two by Two</span></span></div>
-    <span class="pull right" aria-hidden="true"></span>
-  </div>
-  <div class="drawer-body">
-    <div class="ranked">
-      <div class="reveal d1">
-        <p class="kicker">Ranked play · real players only</p>
-        <h2>Two of everything. <em>Every game counts.</em></h2>
-        <p>Two creatures in every row, every column, every region. Every game moves your rating, and the rankings are real players only, no bots. Climb from Apprentice to Professor and earn your place in the Society.</p>
-        <div class="duel" aria-hidden="true">
-          <img class="watch" src="assets/img/watch.png" alt="" />
-          <span class="vs">par</span>
-          <img class="watch b" src="assets/img/watch.png" alt="" />
-        </div>
-        <div class="mini2" aria-hidden="true">
-<i class="c-cream"></i>
-<i class="c-cream"></i>
-<i class="c-blue"></i>
-<i class="c-blue"></i>
-<i class="c-blue"><img src="assets/img/tile/blue_morpho.webp" alt="" /></i>
-<i class="c-blue"></i>
-<i class="c-teal"><img src="assets/img/tile/owl.webp" alt="" /></i>
-<i class="c-teal"></i>
-<i class="c-cream"><img src="assets/img/tile/peacock.webp" alt="" /></i>
-<i class="c-blue"></i>
-<i class="c-blue"><img src="assets/img/tile/blue_morpho.webp" alt="" /></i>
-<i class="c-blue"></i>
-<i class="c-blue"></i>
-<i class="c-rose"></i>
-<i class="c-rose"></i>
-<i class="c-teal"></i>
-<i class="c-cream"></i>
-<i class="c-blue"></i>
-<i class="c-blue"></i>
-<i class="c-rose"></i>
-<i class="c-rose"><img src="assets/img/tile/ladybird.webp" alt="" /></i>
-<i class="c-rose"></i>
-<i class="c-rose"><img src="assets/img/tile/ladybird.webp" alt="" /></i>
-<i class="c-teal"></i>
-<i class="c-cream"><img src="assets/img/tile/peacock.webp" alt="" /></i>
-<i class="c-yellow"></i>
-<i class="c-green"><img src="assets/img/tile/seahorse.webp" alt="" /></i>
-<i class="c-green"></i>
-<i class="c-rose"></i>
-<i class="c-rose"></i>
-<i class="c-teal"></i>
-<i class="c-teal"></i>
-<i class="c-yellow"></i>
-<i class="c-yellow"></i>
-<i class="c-yellow"></i>
-<i class="c-green"></i>
-<i class="c-green"></i>
-<i class="c-green"><img src="assets/img/tile/seahorse.webp" alt="" /></i>
-<i class="c-teal"></i>
-<i class="c-teal"><img src="assets/img/tile/owl.webp" alt="" /></i>
-<i class="c-yellow"></i>
-<i class="c-yellow"><img src="assets/img/tile/red_panda.webp" alt="" /></i>
-<i class="c-yellow"></i>
-<i class="c-yellow"><img src="assets/img/tile/red_panda.webp" alt="" /></i>
-<i class="c-yellow"></i>
-<i class="c-green"></i>
-<i class="c-green"></i>
-<i class="c-teal"></i>
-<i class="c-yellow"></i>
-<i class="c-purple"></i>
-<i class="c-purple"></i>
-<i class="c-yellow"></i>
-<i class="c-peach"></i>
-<i class="c-peach"><img src="assets/img/tile/squirrel.webp" alt="" /></i>
-<i class="c-peach"></i>
-<i class="c-peach"><img src="assets/img/tile/squirrel.webp" alt="" /></i>
-<i class="c-yellow"></i>
-<i class="c-purple"><img src="assets/img/tile/moth.webp" alt="" /></i>
-<i class="c-purple"></i>
-<i class="c-purple"><img src="assets/img/tile/moth.webp" alt="" /></i>
-<i class="c-purple"></i>
-<i class="c-peach"></i>
-<i class="c-peach"></i>
-<i class="c-peach"></i>
-        </div>
-        <p class="mini-cap">Two creatures per row, column and region.</p>
-      </div>
-      <div class="reveal d2">
-        <img class="emblem" src="assets/img/emblem.png" alt="" />
-        <ol class="ladder" id="ladder" aria-label="Ranks, lowest to highest">
-          <li><b>Apprentice</b><span>Where everyone begins</span></li>
-          <li><b>Collector</b><span>A keen eye</span></li>
-          <li><b>Curator</b><span>Trusted with the keys</span></li>
-          <li><b>Fellow</b><span>Of the Society</span></li>
-          <li><b>Professor</b><span>The top of the cabinet</span></li>
-        </ol>
-      </div>
-    </div>
-  </div>
-</section>
 </div>
 
 <!-- ============ FINALE ============ -->
@@ -378,7 +558,7 @@
   <div class="wrap">
     <img class="icon" src="assets/img/icon-512.png" alt="Specimens app icon" width="132" height="132" />
     <h2 id="final-title">The cabinet is open.</h2>
-    <p>1,000+ puzzles, a Daily Puzzle, ranked Two by Two, and a collection that's alive. Free on Android.</p>
+    <p>1,000+ puzzles, a Daily Puzzle, races with friends, and a collection that's alive. Free on Android.</p>
     <a class="play play-live gp big" href="https://play.google.com/store/apps/details?id=com.vaultrush.game" target="_blank" rel="noopener" data-play=""><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Get it on Google Play" width="564" height="168" /></a><button class="play play-soon gp big" type="button" data-soon><span class="soon-cap">Coming soon</span><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Coming soon to Google Play" width="564" height="168" /></button>
   </div>
 </section>
@@ -400,6 +580,43 @@
   <div class="rail-id"><img src="assets/img/icon-512.png" alt="" /><div><b>Specimens</b><small>Free puzzle game</small></div></div>
   <a class="play play-live gp" href="https://play.google.com/store/apps/details?id=com.vaultrush.game" target="_blank" rel="noopener" data-play=""><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Get it on Google Play" width="564" height="168" /></a><button class="play play-soon gp" type="button" data-soon><span class="soon-cap">Coming soon</span><img class="gp-badge" src="assets/img/google-play-badge.png" alt="Coming soon to Google Play" width="564" height="168" /></button>
 </div>
+
+<script>
+/* Race a Friend: plays the illustrated race in place when the drawer is in view */
+(function(){
+  var t=document.getElementById('track'); if(!t) return;
+  var lanes=[t.querySelector('.l1'),t.querySelector('.l2')];
+  var who=[lanes[0].querySelector('.who'),lanes[1].querySelector('.who')];
+  var sc=[lanes[0].querySelector('.sc'),lanes[1].querySelector('.sc')];
+  var time=document.getElementById('tk-time'), cnt=document.getElementById('tk-count'), again=document.getElementById('race-replay');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var MOVES=[[8,19,30,41,52,63,72],[11,25,37,50,64]]; /* game seconds of each correct placement */
+  var END=72, MS=80, timers=[], visible=false, running=false;
+  function at(ms,fn){timers.push(setTimeout(fn,ms));}
+  function fmt(s){var m=Math.floor(s/60),r=s%60;return m+':'+(r<10?'0':'')+r;}
+  function setP(i,n){lanes[i].style.setProperty('--p',n/7);sc[i].textContent=n+'/7';}
+  function hit(i){var l=lanes[i];l.classList.remove('hit');void l.offsetWidth;l.classList.add('hit');}
+  function pop(txt){cnt.textContent=txt;cnt.classList.toggle('go',txt.length>1);cnt.classList.remove('pop');void cnt.offsetWidth;cnt.classList.add('pop');}
+  function reset(){timers.forEach(clearTimeout);timers=[];t.classList.remove('won');cnt.classList.remove('pop');
+    setP(0,0);setP(1,0);who[0].textContent='You';who[1].textContent='Maya';time.textContent='4:00';}
+  function win(){t.classList.add('won');who[0].textContent='1st';sc[0].textContent=fmt(END);who[1].textContent='2nd';}
+  function final(){reset();setP(0,7);setP(1,5);time.textContent=fmt(240-END);win();}
+  function run(){
+    reset();running=true;
+    ['3','2','1','Go!'].forEach(function(c,i){at(i*800,function(){pop(c);});});
+    var s0=3000;
+    for(var g=1;g<=END;g++)(function(g){at(s0+g*MS,function(){time.textContent=fmt(240-g);});})(g);
+    MOVES.forEach(function(m,i){m.forEach(function(g,k){at(s0+g*MS,function(){setP(i,k+1);hit(i);});});});
+    at(s0+END*MS+150,win);
+    at(s0+END*MS+5200,function(){if(visible)run();else running=false;});
+  }
+  if(reduce){final();if(again)again.hidden=true;return;}
+  if(again)again.addEventListener('click',run);
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){es.forEach(function(e){visible=e.isIntersecting;if(visible&&!running)run();});},{threshold:.35}).observe(t);
+  }else{run();}
+})();
+</script>
 <!--/BODY-->
 <script src="assets/js/site.js" defer></script>
 <script src="assets/js/analytics.js" defer></script>
