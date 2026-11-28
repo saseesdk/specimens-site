@@ -10,6 +10,7 @@
 
   /* store link from config */
   if (cfg.playUrl) $$("a[data-play]").forEach(function (a) { a.href = cfg.playUrl; });
+  if (cfg.appStoreUrl) $$("a[data-appstore]").forEach(function (a) { a.href = cfg.appStoreUrl; });
   $$("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
   /* ---------- dust in the lamp light ---------- */
@@ -241,7 +242,8 @@
     doc.addEventListener("click", function (e) {
       if (!e.target.closest || !e.target.closest("[data-soon]")) return;
       if (!toast) { toast = doc.createElement("div"); toast.className = "soon-toast"; toast.setAttribute("role", "status"); doc.body.appendChild(toast); }
-      toast.textContent = "Specimens is coming to Google Play very soon. The cabinet opens shortly!";
+      var ios = e.target.closest("[data-soon]").getAttribute("data-soon") === "ios";
+      toast.textContent = ios ? "Specimens is coming to the App Store very soon. The cabinet opens shortly!" : "Specimens is coming to Google Play very soon. The cabinet opens shortly!";
       toast.classList.add("show"); clearTimeout(t); t = setTimeout(function () { toast.classList.remove("show"); }, 3200);
     });
   })();

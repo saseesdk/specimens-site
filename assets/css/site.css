@@ -756,3 +756,23 @@ html[data-launch="soon"] .play-soon.gp{display:inline-flex}
 .prose,.prose p,.prose li,.prose blockquote{hyphens:none;-webkit-hyphens:none}
 .lost-card .soon-cap{color:#6b4a14}
 .lost-card .gp-badge{box-shadow:0 0 0 1px rgba(60,40,10,.4),0 4px 12px rgba(0,0,0,.35)}
+
+/* ---------- App Store button beside Google Play (switch: iosLaunch in assets/js/config.js) ---------- */
+.stores{display:flex;flex-wrap:wrap;align-items:center;gap:12px 14px}
+.as-soon{display:none;border:0;font:inherit;cursor:pointer;-webkit-appearance:none;appearance:none}
+html[data-ios="soon"] .as-live{display:none}
+html[data-ios="soon"] .as-soon.gp{display:inline-flex}
+.as-badge{box-shadow:0 0 0 1px rgba(166,166,166,.55),0 6px 18px rgba(0,0,0,.55)}
+.site-head .stores,.cta-rail .stores{flex-wrap:nowrap;gap:8px}
+.site-head .play.gp.as-live,.site-head .play.gp.as-soon{--bh:40px}
+
+/* both stores "coming soon": ONE caption over the pair instead of one over each badge */
+html[data-launch="soon"][data-ios="soon"] .stores{row-gap:6px;justify-content:center}
+html[data-launch="soon"][data-ios="soon"] .stores .soon-cap{display:none}
+html[data-launch="soon"][data-ios="soon"] .stores::before{content:"Coming soon";flex:0 0 100%;text-align:center;font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;line-height:1;color:var(--brass-hi)}
+html[data-launch="soon"][data-ios="soon"] .stores:has(.big)::before{font-size:15px}
+.hero-cta .stores{width:fit-content;max-width:100%}
+/* phones: the top bar has no room for two badges next to the name; the hero and the bottom bar carry both */
+@media (max-width:560px){.site-head .stores{display:none}}
+html[data-launch="soon"][data-ios="soon"] .site-head .stores,html[data-launch="soon"][data-ios="soon"] .cta-rail .stores{flex-wrap:wrap}
+html[data-launch="soon"][data-ios="soon"] .site-head .stores::before,html[data-launch="soon"][data-ios="soon"] .cta-rail .stores::before{font-size:10px;letter-spacing:.12em}
